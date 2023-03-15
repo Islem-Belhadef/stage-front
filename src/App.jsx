@@ -1,7 +1,7 @@
 function App() {
   return (
-    <div>
-      <h1 classname="font-mono text-red-600">Stage ehhe</h1>
+    <div className="text-red-500 font-black font-mono">
+      <h1>Stage hehe</h1>
     </div>
   )
 }

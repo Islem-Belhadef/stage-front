@@ -97,7 +97,7 @@ const Login = () => {
         </div>
       </div>
 
-      <div className="cover" id="login-cover"></div>
+      <div className="cover flex-1" id="login-cover"></div>
     </div>
   )
 }

@@ -14,5 +14,9 @@
 }
 
 #login-cover {
-  background: url("./assets/login.png") no-repeat center border-box;
+  background: url("./assets/login-cover.jpg") no-repeat center border-box;
+}
+
+.home {
+  background: url("./assets/home-cover.jpg") no-repeat top border-box;
 }

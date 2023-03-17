@@ -8,15 +8,3 @@
 .input {
   @apply border-2 border-lightGray rounded-lg py-3 px-4 font-normal focus:outline-none focus:border-primary focus:ring-2 focus:ring-ring w-full;
 }
-
-.cover {
-  @apply flex-1;
-}
-
-#login-cover {
-  background: url("./assets/login-cover.jpg") no-repeat center border-box;
-}
-
-.home {
-  background: url("./assets/home-cover.jpg") no-repeat top border-box;
-}

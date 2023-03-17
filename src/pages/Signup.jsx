@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 // Assets
 import logo from "/logo.svg"
 import { Eye } from "iconsax-react"
+import image from "../assets/login-cover.jpg"
 
 const Signup = () => {
   return (
@@ -92,7 +93,10 @@ const Signup = () => {
         </div>
       </div>
 
-      <div className="cover" id="login-cover"></div>
+      <div
+        className="flex-1 bg-cover bg-center"
+        style={{ backgroundImage: `url(${image})` }}
+      ></div>
     </div>
   )
 }

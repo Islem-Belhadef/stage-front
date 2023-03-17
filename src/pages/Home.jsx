@@ -2,9 +2,14 @@ import { Link } from "react-router-dom"
 
 import TypewriterComponent from "typewriter-effect"
 
+import image from "../assets/home-cover.jpg"
+
 const Home = () => {
   return (
-    <div className="home h-screen w-screen">
+    <div
+      className="h-screen w-screen bg-cover bg-top"
+      style={{ backgroundImage: `url(${image})` }}
+    >
       <nav className="flex items-center justify-between px-6 py-4">
         <div className="flex gap-14">
           <Link
@@ -32,10 +37,13 @@ const Home = () => {
             Contact
           </Link>
         </div>
-        <div className="flex gap-14">
-          <button className="font-header text-white text-lg hover:scale-110 focus:scale-90 transition">
+        <div className="flex gap-14 items-center">
+          <Link
+            to="/login"
+            className="font-header text-white text-lg hover:scale-110 focus:scale-90 transition"
+          >
             Login
-          </button>
+          </Link>
           <button className="font-header text-white text-lg px-10 py-3 rounded-lg bg-gray-300/10 hover:bg-gray-300/20 hover:scale-105 focus:scale-95 transition">
             Sign up
           </button>

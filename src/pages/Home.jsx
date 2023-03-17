@@ -25,12 +25,6 @@ const Home = () => {
             Companies
           </Link>
           <Link
-            to="/about"
-            className="font-header text-white text-lg hover:scale-110 focus:scale-90 transition"
-          >
-            About
-          </Link>
-          <Link
             to="/contact"
             className="font-header text-white text-lg hover:scale-110 focus:scale-90 transition"
           >

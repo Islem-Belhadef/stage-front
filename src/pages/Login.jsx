@@ -32,10 +32,7 @@ const Login = () => {
             </Link>
           </p>
           <form className="flex flex-col items-center text-center font-body w-full mt-8 mb-6">
-            <label
-              htmlFor="email"
-              className="flex flex-col text-left text-grayText font-medium w-full mb-4"
-            >
+            <label htmlFor="email" className="label mb-4">
               Email address
               <input
                 type="text"
@@ -44,10 +41,7 @@ const Login = () => {
                 className="input mt-2"
               />
             </label>
-            <label
-              htmlFor="password"
-              className="flex flex-col text-left text-grayText font-medium w-full"
-            >
+            <label htmlFor="password" className="label">
               Password
               <div className="flex flex-col items-end">
                 <input
@@ -85,10 +79,7 @@ const Login = () => {
                 Forgot password
               </Link>
             </div>
-            <button
-              type="submit"
-              className="px-16 py-3 rounded-lg bg-primary text-white font-body font-medium mt-10"
-            >
+            <button type="submit" className="btn px-16 mt-10">
               Login
             </button>
           </form>

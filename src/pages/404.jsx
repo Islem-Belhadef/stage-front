@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { Warning2, ArrowLeft } from "iconsax-react"
 
-const Error404 = () => {
+const NotFound = () => {
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center">
       <Warning2 color="#383EBE" size={140} className="m-8" />
@@ -20,4 +20,4 @@ const Error404 = () => {
   )
 }
 
-export default Error404
+export default NotFound

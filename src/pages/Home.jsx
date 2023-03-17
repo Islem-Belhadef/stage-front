@@ -44,13 +44,16 @@ const Home = () => {
           >
             Login
           </Link>
-          <button className="font-header text-white text-lg px-10 py-3 rounded-lg bg-gray-300/10 hover:bg-gray-300/20 hover:scale-105 focus:scale-95 transition">
+          <Link
+            to="/signup"
+            className="font-header text-white text-lg px-10 py-3 rounded-lg bg-gray-300/10 hover:bg-gray-300/20 hover:scale-105 focus:scale-95 transition"
+          >
             Sign up
-          </button>
+          </Link>
         </div>
       </nav>
       <div className="flex h-4/5 w-full items-center justify-center font-body font-medium text-white text-3xl">
-        <div className="w-3/5">
+        <div className="w-3/5 text-center">
           <TypewriterComponent
             onInit={(typerwriter) => {
               typerwriter

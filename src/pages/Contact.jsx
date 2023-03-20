@@ -127,7 +127,7 @@ const Contact = () => {
                 className="input mt-2"
               />
             </label>
-            <button type="submit" className="btn mt-6">
+            <button type="submit" className="primary-btn mt-6">
               Send email
             </button>
           </form>

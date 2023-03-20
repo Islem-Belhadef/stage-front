@@ -13,6 +13,10 @@
   @apply flex flex-col text-left text-grayText font-medium font-body w-full;
 }
 
-.btn {
-  @apply py-3 rounded-lg bg-primary text-white font-body font-medium;
+.primary-btn {
+  @apply py-3 px-16 rounded-lg bg-primary text-white font-body font-medium;
+}
+
+.secondary-btn {
+  @apply py-3 rounded-lg border border-primary text-primary font-body font-medium;
 }

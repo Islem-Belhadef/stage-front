@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 
 // Assets
 import logo from "/logo.svg"
-import { Eye } from "iconsax-react"
 import image from "../assets/login-cover.jpg"
+import { Eye } from "iconsax-react"
 
 const Login = () => {
   return (
@@ -79,7 +79,7 @@ const Login = () => {
                 Forgot password
               </Link>
             </div>
-            <button type="submit" className="btn px-16 mt-10">
+            <button type="submit" className="primary-btn mt-10">
               Login
             </button>
           </form>

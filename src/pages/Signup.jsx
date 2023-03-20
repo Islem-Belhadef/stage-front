@@ -80,10 +80,7 @@ const Signup = () => {
                 className="input mt-2"
               />
             </label>
-            <button
-              type="submit"
-              className="px-16 py-3 rounded-lg bg-primary text-white font-body font-medium mt-10"
-            >
+            <button type="submit" className="primary-btn px-16 mt-10">
               Create account
             </button>
           </form>

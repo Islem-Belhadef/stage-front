@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       colors: {
         primary: "#383EBE",
+        primaryHover: "#4850F1",
+        primaryFocus: "#2127AF",
+        primaryDisabled: "#B9BACA",
         secondary: "#7CDF64",
         text: "#272937",
         lightText: "#9D9CAC",

@@ -8,6 +8,7 @@ import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Contact from "./pages/Contact"
 import PersonalInformation from "./pages/PersonalInformation"
+import ConfirmEmail from "./pages/ConfirmEmail"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/signup/confirm" element={<ConfirmEmail />} />
           <Route path="/signup/info" element={<PersonalInformation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

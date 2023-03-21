@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 .input {
-  @apply border-2 border-lightGray rounded-lg py-3 px-4 font-normal focus:outline-none focus:border-primary focus:ring-2 focus:ring-ring w-full;
+  @apply border-2 border-lightGray rounded-lg py-3 px-4 font-normal focus:outline-none focus:border-primary focus:ring-2 focus:ring-ring w-full transition;
 }
 
 .label {
@@ -14,9 +14,15 @@
 }
 
 .primary-btn {
-  @apply py-3 px-16 rounded-lg bg-primary text-white font-body font-medium;
+  @apply py-3 px-16 rounded-lg bg-primary text-white font-body font-medium hover:bg-primaryHover focus:bg-primaryFocus disabled:bg-primaryDisabled transition;
 }
 
 .secondary-btn {
-  @apply py-3 rounded-lg border border-primary text-primary font-body font-medium;
+  @apply py-3 rounded-lg border border-primary hover:border-primaryHover focus:border-primaryFocus disabled:border-primaryDisabled disabled:bg-transparent text-primary font-body font-medium transition;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

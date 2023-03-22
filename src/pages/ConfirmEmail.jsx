@@ -103,7 +103,7 @@ const ConfirmEmail = () => {
               style={{ width: "3rem", height: "3rem", fontSize: "1.3rem" }}
             />
           </div>
-          <button type="submit" className="primary-btn my-6">
+          <button type="submit" className="primary-btn my-6 w-full">
             Confirm
           </button>
         </form>

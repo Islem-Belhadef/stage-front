@@ -14,11 +14,11 @@
 }
 
 .primary-btn {
-  @apply py-3 px-16 rounded-lg bg-primary text-white font-body font-medium hover:bg-primaryHover focus:bg-primaryFocus disabled:bg-primaryDisabled transition;
+  @apply py-3 px-16 rounded-lg bg-primary text-white font-body font-medium hover:bg-primaryHover focus:bg-primaryFocus disabled:bg-primaryDisabled text-center transition;
 }
 
 .secondary-btn {
-  @apply py-3 rounded-lg border border-primary hover:border-primaryHover focus:border-primaryFocus disabled:border-primaryDisabled disabled:bg-transparent text-primary font-body font-medium transition;
+  @apply py-3 rounded-lg border border-primary hover:border-primaryHover focus:border-primaryFocus disabled:border-primaryDisabled disabled:bg-transparent text-primary font-body font-medium text-center transition;
 }
 
 input::-webkit-outer-spin-button,

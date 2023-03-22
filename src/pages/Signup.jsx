@@ -38,7 +38,7 @@ const Signup = () => {
             >
               Email address
               <input
-                type="text"
+                type="email"
                 name="email"
                 id="email"
                 className="input mt-2"

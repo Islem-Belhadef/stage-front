@@ -9,10 +9,10 @@ const PersonalInformation = () => {
     >
       <div className="rounded-xl bg-white py-8 px-24">
         <h1 className="font-header text-3xl text-text font-semibold mb-2">
-          Personal informations
+          Personal information
         </h1>
         <p className="font-body text-lightText">
-          Please fill in these informations to proceed
+          Please fill in these information to proceed
         </p>
         <form className="mt-8">
           <div className="grid grid-cols-2 gap-x-8 gap-y-2">

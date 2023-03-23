@@ -20,7 +20,7 @@ const ConfirmEmail = () => {
           continue
         </p>
         <form className="flex flex-col items-center mt-6">
-          <label htmlFor="code-1" className="label">
+          <label htmlFor="code-1" className="label mb-2">
             Code
           </label>
           <div className="flex gap-4">

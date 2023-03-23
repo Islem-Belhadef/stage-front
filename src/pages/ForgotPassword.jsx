@@ -41,7 +41,7 @@ const ForgotPassword = () => {
         )}
         {!resetSent && (
           <form className="flex flex-col items-center mt-6 w-full">
-            <label htmlFor="code-1" className="label">
+            <label htmlFor="email" className="label">
               Email address
               <input
                 type="email"

@@ -10,6 +10,8 @@ import Contact from "./pages/Contact"
 import PersonalInformation from "./pages/PersonalInformation"
 import ConfirmEmail from "./pages/ConfirmEmail"
 import ForgotPassword from "./pages/ForgotPassword"
+import PasswordReset from "./pages/PasswordReset"
+import Companies from "./pages/Companies"
 
 function App() {
   return (
@@ -19,10 +21,12 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/login/password" element={<ForgotPassword />} />
+          <Route path="/login/reset" element={<PasswordReset />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signup/confirm" element={<ConfirmEmail />} />
           <Route path="/signup/info" element={<PersonalInformation />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/internship/companies" element={<Companies />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

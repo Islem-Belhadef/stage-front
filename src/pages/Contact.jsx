@@ -33,9 +33,14 @@ const Contact = () => {
       >
         <Header />
         <div className="w-full pt-20 pb-32 flex items-center justify-center">
-          <h1 className="font-body font-medium text-3xl text-white">
-            Contact Us
-          </h1>
+          <div className="flex flex-col text-center items-center justify-center gap-3">
+            <h1 className="font-body font-medium text-3xl text-white">
+              Contact us
+            </h1>
+            <p className="font-body text-sm text-yellow-300">
+              We'll be more than happy to help you
+            </p>
+          </div>
         </div>
       </div>
       <div className="flex py-8 px-6 gap-12">

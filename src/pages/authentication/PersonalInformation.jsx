@@ -1,5 +1,5 @@
 // Assets
-import image from "../assets/informations-cover.jpg"
+import image from "../../assets/informations-cover.jpg"
 
 const PersonalInformation = () => {
   return (

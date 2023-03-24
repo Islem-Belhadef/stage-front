@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 // Assets
 import { Key, ArrowLeft, Eye } from "iconsax-react"
-import image from "../assets/informations-cover.jpg"
+import image from "../../assets/informations-cover.jpg"
 
 const PasswordReset = () => {
   return (

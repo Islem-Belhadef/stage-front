@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 // Assets
 import logo from "/logo.svg"
 import { Eye } from "iconsax-react"
-import image from "../assets/login-cover.jpg"
+import image from "../../assets/login-cover.jpg"
 
 const Signup = () => {
   return (

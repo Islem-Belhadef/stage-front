@@ -2,11 +2,11 @@ import { Link } from "react-router-dom"
 
 // Assets
 import { Key, ArrowLeft } from "iconsax-react"
-import image from "../assets/informations-cover.jpg"
+import image from "../../assets/informations-cover.jpg"
 import { useState } from "react"
 
 const ForgotPassword = () => {
-  const [resetSent, setResetSent] = useState(true)
+  const [resetSent, setResetSent] = useState(false)
 
   return (
     <div
@@ -30,7 +30,7 @@ const ForgotPassword = () => {
         )}
         {!resetSent && (
           <p className="font-body text-lightText">
-            Please enter your university email address so we can send you a
+            Please enter your account's email address so we can send you a
             password reset link
           </p>
         )}

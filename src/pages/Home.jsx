@@ -13,7 +13,7 @@ const Home = () => {
       className="h-screen w-screen bg-cover bg-top"
       style={{ backgroundImage: `url(${image})` }}
     >
-      <Header />
+      <Header fontColor="#FFFFFF" />
       <div className="flex h-4/5 w-full items-center justify-center font-body font-medium text-white text-3xl">
         <div className="w-3/5 text-center">
           <TypewriterComponent

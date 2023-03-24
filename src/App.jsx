@@ -12,6 +12,7 @@ import ConfirmEmail from "./pages/authentication/ConfirmEmail"
 import ForgotPassword from "./pages/authentication/ForgotPassword"
 import PasswordReset from "./pages/authentication/PasswordReset"
 import Companies from "./pages/Companies"
+import Offers from "./pages/Offers"
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/signup/info" element={<PersonalInformation />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/internship/companies" element={<Companies />} />
+          <Route path="/internship/offers" element={<Offers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

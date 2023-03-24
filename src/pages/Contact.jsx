@@ -31,7 +31,7 @@ const Contact = () => {
         className="bg-cover bg-top"
         style={{ backgroundImage: `url(${image})` }}
       >
-        <Header />
+        <Header fontColor="#FFFFFF" />
         <div className="w-full pt-20 pb-32 flex items-center justify-center">
           <div className="flex flex-col text-center items-center justify-center gap-3">
             <h1 className="font-body font-medium text-3xl text-white">

@@ -14,7 +14,7 @@ module.exports = {
         grayText: "#616373",
         lightGray: "#CED3E1",
         ring: "#BABCF2",
-        bg: "#F5F5F5",
+        bg: "#F9F9F9",
       },
       fontFamily: {
         header: ["Nunito", "sans-serif"],

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 // Assets
 import logo from "/logo.svg"
-import image from "../assets/login-cover.jpg"
+import image from "../../assets/login-cover.jpg"
 import { Eye } from "iconsax-react"
 
 const Login = () => {

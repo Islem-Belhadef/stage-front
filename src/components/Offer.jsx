@@ -10,7 +10,7 @@ const Offer = ({ offer }) => {
       <div className="flex-1">
         <div className="flex items-center gap-8">
           <div
-            className="w-1/5 h-20 bg-center bg-no-repeat bg-contain"
+            className="w-1/6 h-20 bg-center bg-no-repeat bg-contain"
             style={{ backgroundImage: `url(${offer.company.logo})` }}
           ></div>
           <div>

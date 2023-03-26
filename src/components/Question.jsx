@@ -1,7 +1,10 @@
+// React & Router
 import { useState } from "react"
 
+// Assets
 import { Add, Minus } from "iconsax-react"
 
+// Plugins
 import { motion } from "framer-motion"
 
 const Question = ({ question }) => {

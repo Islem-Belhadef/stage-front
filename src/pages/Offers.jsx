@@ -104,8 +104,8 @@ const Offers = () => {
 
   return (
     <div className="bg-gray-50">
-      <Header fontColor="#272937" bgColor="#FFFFFF" />
-      <div className="container mx-auto flex gap-8 py-10">
+      <Header fontColor="#272937" bgColor="#FFFFFF" btnColor="#383EBE" />
+      <div className="container mx-auto flex flex-col lg:flex-row gap-8 py-10">
         <div className="bg-white rounded-xl shadow-md shadow-gray-100 py-10 px-6 h-fit">
           <h1 className="font-header text-text text-2xl font-bold">Filters</h1>
           <form className="flex flex-col items-center mt-6">

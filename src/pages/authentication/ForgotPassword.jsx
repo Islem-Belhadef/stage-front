@@ -6,7 +6,7 @@ import image from "../../assets/informations-cover.jpg"
 import { useState } from "react"
 
 const ForgotPassword = () => {
-  const [resetSent, setResetSent] = useState(false)
+  const [resetSent, setResetSent] = useState(true)
 
   return (
     <div

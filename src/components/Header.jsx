@@ -80,7 +80,11 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
               initial={{ height: 0 }}
               animate={{ height: "auto" }}
               exit={{ height: 0 }}
-              className="rounded-xl bg-white shadow-lg shadow-gray-100 absolute right-10 top-20 w-72 transition"
+              className={
+                bgColor == "#FFFFFF"
+                  ? "rounded-xl bg-white shadow-lg shadow-gray-100 absolute right-10 top-20 w-72 transition"
+                  : "rounded-xl bg-white absolute right-10 top-20 w-72 transition"
+              }
               onMouseLeave={() => setShowMenu(false)}
             >
               <motion.a
@@ -88,7 +92,7 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
                 animate={{ opacity: 1, transition: { duration: 0 } }}
                 exit={{ opacity: 0, transition: { duration: 0.2 } }}
                 href="/user/1526"
-                className="font-body text-text flex items-center gap-4 px-8 py-4 border-b border-b-gray-50 hover:bg-gray-100/20"
+                className="font-body text-text flex items-center gap-4 px-8 py-4 border-b border-b-gray-50 hover:bg-gray-100/20 rounded-t-xl"
               >
                 <User size={26} color="#272937" />
                 My account
@@ -108,7 +112,7 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 0.2 } }}
                 exit={{ opacity: 0, transition: { duration: 0 } }}
-                className="font-body text-red-500 flex items-center gap-4 px-8 py-4 w-full hover:bg-gray-100/20"
+                className="font-body text-red-500 flex items-center gap-4 px-8 py-4 w-full hover:bg-gray-100/20  rounded-b-xl"
               >
                 <Logout size={26} color="#EF4444" />
                 Logout

@@ -1,10 +1,14 @@
+// React & Router
 import { Link } from "react-router-dom"
-import { Warning2, ArrowLeft } from "iconsax-react"
+
+// Assets
+import { ArrowLeft } from "iconsax-react"
+import pageNotFound from "../assets/page-not-found.svg"
 
 const NotFound = () => {
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center">
-      <Warning2 color="#383EBE" size={140} className="m-8" />
+      <img src={pageNotFound} alt="page not found" className="h-1/2" />
       <h1 className="text-text font-header text-3xl font-bold">
         Oops! page not found
       </h1>

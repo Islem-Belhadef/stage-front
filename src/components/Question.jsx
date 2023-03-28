@@ -5,7 +5,7 @@ import { useState } from "react"
 import { Add, Minus } from "iconsax-react"
 
 // Plugins
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
 const Question = ({ question }) => {
   const [showAnswer, setShowAnswer] = useState(false)
@@ -22,20 +22,22 @@ const Question = ({ question }) => {
       }}
     >
       <div className="flex justify-between items-center gap-8">
-        <p className="text-grayText">{question.qst}</p>
+        <p className="text-text">{question.qst}</p>
         {!showAnswer && <Add color="#616373" size={24} />}
         {showAnswer && <Minus color="#616373" size={24} />}
       </div>
-      {showAnswer && (
-        <motion.div
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -100, opacity: 0 }}
-          className="font-body text-text"
-        >
-          {question.ans}
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {showAnswer && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0, transition: { duration: 0.07 } }}
+            className="font-body text-grayText"
+          >
+            {question.ans}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

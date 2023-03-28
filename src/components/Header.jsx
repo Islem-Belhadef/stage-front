@@ -9,7 +9,7 @@ import { User, Setting, Logout, ArrowDown2 } from "iconsax-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 const Header = ({ fontColor, bgColor, btnColor }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [showMenu, setShowMenu] = useState(false)
 
   return (
@@ -28,7 +28,8 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
             className="font-header text-lg hover:scale-110 active:scale-90 transition p-4"
             style={{ color: fontColor }}
           >
-            Home
+            {!isAuthenticated && "Home"}
+            {isAuthenticated && "Dashboard"}
           </Link>
           <Link
             to="/internship/offers"

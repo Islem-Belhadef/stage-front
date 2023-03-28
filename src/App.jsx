@@ -19,7 +19,7 @@ import SupervisorDashboard from "./pages/SupervisorDashboard"
 import SuperAdminDashboard from "./pages/SuperAdminDashboard"
 
 function App() {
-  const isAuthenticated = true
+  const isAuthenticated = false
   const type = "student"
   let dashboard
 

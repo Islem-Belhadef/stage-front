@@ -25,28 +25,28 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
         <div className="flex gap-8">
           <Link
             to="/"
-            className="font-header text-lg hover:scale-110 focus:scale-90 transition p-4"
+            className="font-header text-lg hover:scale-110 active:scale-90 transition p-4"
             style={{ color: fontColor }}
           >
             Home
           </Link>
           <Link
             to="/internship/offers"
-            className="font-header text-lg hover:scale-110 focus:scale-90 transition p-4"
+            className="font-header text-lg hover:scale-110 active:scale-90 transition p-4"
             style={{ color: fontColor }}
           >
             Offers
           </Link>
           <Link
             to="/internship/companies"
-            className="font-header text-lg hover:scale-110 focus:scale-90 transition p-4"
+            className="font-header text-lg hover:scale-110 active:scale-90 transition p-4"
             style={{ color: fontColor }}
           >
             Companies
           </Link>
           <Link
             to="/contact"
-            className="font-header text-lg hover:scale-110 focus:scale-90 transition p-4"
+            className="font-header text-lg hover:scale-110 active:scale-90 transition p-4"
             style={{ color: fontColor }}
           >
             Contact us
@@ -56,14 +56,14 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
           <div className="flex gap-12 items-center">
             <Link
               to="/login"
-              className="font-header text-lg hover:scale-110 focus:scale-90 transition p-4"
+              className="font-header text-lg hover:scale-110 active:scale-90 transition p-4"
               style={{ color: fontColor }}
             >
               Login
             </Link>
             <Link
               to="/signup"
-              className="font-header text-white text-lg px-10 py-3 rounded-lg bg-gray-300/10 hover:bg-gray-300/20 hover:scale-105 focus:scale-95 transition"
+              className="font-header text-white text-lg px-10 py-3 rounded-lg bg-gray-300/10 hover:bg-gray-300/20 hover:scale-105 active:scale-95 transition"
               style={{ backgroundColor: btnColor }}
             >
               Sign up

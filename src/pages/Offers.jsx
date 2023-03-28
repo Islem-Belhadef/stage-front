@@ -7,102 +7,102 @@ import emptyBox from "../assets/empty-box.svg"
 
 const Offers = () => {
   const offers = [
-    // {
-    //   title: "Web developer",
-    //   spots: 3,
-    //   duration: 1,
-    //   company: {
-    //     name: "Ooredoo",
-    //     domain: "Telecommunications",
-    //     logo: "https://seeklogo.com/images/O/ooredoo-logo-DC5A203B79-seeklogo.com.png",
-    //     address: "Ali Mendjli, Constantine",
-    //     offers: 3,
-    //   },
-    // },
-    // {
-    //   title: "Network engineer",
-    //   spots: 3,
-    //   duration: 3,
-    //   company: {
-    //     name: "Mobilis",
-    //     domain: "Telecommunications",
-    //     logo: "https://seeklogo.com/images/M/mobilis-logo-005D3C94BA-seeklogo.com.png",
-    //     address: "Ali Mendjli, Constantine",
-    //     offers: 3,
-    //   },
-    // },
-    // {
-    //   title: "Web developer",
-    //   spots: 3,
-    //   duration: 1,
-    //   company: {
-    //     name: "Ooredoo",
-    //     domain: "Telecommunications",
-    //     logo: "https://seeklogo.com/images/O/ooredoo-logo-DC5A203B79-seeklogo.com.png",
-    //     address: "Ali Mendjli, Constantine",
-    //     offers: 3,
-    //   },
-    // },
-    // {
-    //   title: "Network engineer",
-    //   spots: 3,
-    //   duration: 3,
-    //   company: {
-    //     name: "Mobilis",
-    //     domain: "Telecommunications",
-    //     logo: "https://seeklogo.com/images/M/mobilis-logo-005D3C94BA-seeklogo.com.png",
-    //     address: "Ali Mendjli, Constantine",
-    //     offers: 3,
-    //   },
-    // },
-    // {
-    //   title: "Web developer",
-    //   spots: 3,
-    //   duration: 1,
-    //   company: {
-    //     name: "Ooredoo",
-    //     domain: "Telecommunications",
-    //     logo: "https://seeklogo.com/images/O/ooredoo-logo-DC5A203B79-seeklogo.com.png",
-    //     address: "Ali Mendjli, Constantine",
-    //     offers: 3,
-    //   },
-    // },
-    // {
-    //   title: "Network engineer",
-    //   spots: 3,
-    //   duration: 3,
-    //   company: {
-    //     name: "Mobilis",
-    //     domain: "Telecommunications",
-    //     logo: "https://seeklogo.com/images/M/mobilis-logo-005D3C94BA-seeklogo.com.png",
-    //     address: "Ali Mendjli, Constantine",
-    //     offers: 3,
-    //   },
-    // },
-    // {
-    //   title: "Web developer",
-    //   spots: 3,
-    //   duration: 1,
-    //   company: {
-    //     name: "Ooredoo",
-    //     domain: "Telecommunications",
-    //     logo: "https://seeklogo.com/images/O/ooredoo-logo-DC5A203B79-seeklogo.com.png",
-    //     address: "Ali Mendjli, Constantine",
-    //     offers: 3,
-    //   },
-    // },
-    // {
-    //   title: "Network engineer",
-    //   spots: 3,
-    //   duration: 3,
-    //   company: {
-    //     name: "Mobilis",
-    //     domain: "Telecommunications",
-    //     logo: "https://seeklogo.com/images/M/mobilis-logo-005D3C94BA-seeklogo.com.png",
-    //     address: "Ali Mendjli, Constantine",
-    //     offers: 3,
-    //   },
-    // },
+    {
+      title: "Web developer",
+      spots: 3,
+      duration: 1,
+      company: {
+        name: "Ooredoo",
+        domain: "Telecommunications",
+        logo: "https://seeklogo.com/images/O/ooredoo-logo-DC5A203B79-seeklogo.com.png",
+        address: "Ali Mendjli, Constantine",
+        offers: 3,
+      },
+    },
+    {
+      title: "Network engineer",
+      spots: 3,
+      duration: 3,
+      company: {
+        name: "Mobilis",
+        domain: "Telecommunications",
+        logo: "https://seeklogo.com/images/M/mobilis-logo-005D3C94BA-seeklogo.com.png",
+        address: "Ali Mendjli, Constantine",
+        offers: 3,
+      },
+    },
+    {
+      title: "Web developer",
+      spots: 3,
+      duration: 1,
+      company: {
+        name: "Ooredoo",
+        domain: "Telecommunications",
+        logo: "https://seeklogo.com/images/O/ooredoo-logo-DC5A203B79-seeklogo.com.png",
+        address: "Ali Mendjli, Constantine",
+        offers: 3,
+      },
+    },
+    {
+      title: "Network engineer",
+      spots: 3,
+      duration: 3,
+      company: {
+        name: "Mobilis",
+        domain: "Telecommunications",
+        logo: "https://seeklogo.com/images/M/mobilis-logo-005D3C94BA-seeklogo.com.png",
+        address: "Ali Mendjli, Constantine",
+        offers: 3,
+      },
+    },
+    {
+      title: "Web developer",
+      spots: 3,
+      duration: 1,
+      company: {
+        name: "Ooredoo",
+        domain: "Telecommunications",
+        logo: "https://seeklogo.com/images/O/ooredoo-logo-DC5A203B79-seeklogo.com.png",
+        address: "Ali Mendjli, Constantine",
+        offers: 3,
+      },
+    },
+    {
+      title: "Network engineer",
+      spots: 3,
+      duration: 3,
+      company: {
+        name: "Mobilis",
+        domain: "Telecommunications",
+        logo: "https://seeklogo.com/images/M/mobilis-logo-005D3C94BA-seeklogo.com.png",
+        address: "Ali Mendjli, Constantine",
+        offers: 3,
+      },
+    },
+    {
+      title: "Web developer",
+      spots: 3,
+      duration: 1,
+      company: {
+        name: "Ooredoo",
+        domain: "Telecommunications",
+        logo: "https://seeklogo.com/images/O/ooredoo-logo-DC5A203B79-seeklogo.com.png",
+        address: "Ali Mendjli, Constantine",
+        offers: 3,
+      },
+    },
+    {
+      title: "Network engineer",
+      spots: 3,
+      duration: 3,
+      company: {
+        name: "Mobilis",
+        domain: "Telecommunications",
+        logo: "https://seeklogo.com/images/M/mobilis-logo-005D3C94BA-seeklogo.com.png",
+        address: "Ali Mendjli, Constantine",
+        offers: 3,
+      },
+    },
   ]
 
   return (

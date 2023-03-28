@@ -20,20 +20,19 @@ import SuperAdminDashboard from "./pages/SuperAdminDashboard"
 
 function App() {
   const isAuthenticated = true
-  const type = "hod"
+  const type = "student"
   let dashboard
 
-  switch (type) {
-    case "student":
-      dashboard = <StudentDashboard />
-    case "hod":
-      dashboard = <HODDashboard />
-    case "supervisor":
-      dashboard = <SupervisorDashboard />
-    case "admin":
-      dashboard = <SuperAdminDashboard />
-      break
-  }
+  dashboard =
+    type === "student" ? (
+      <StudentDashboard />
+    ) : type === "hod" ? (
+      <HODDashboard />
+    ) : type === "supervisor" ? (
+      <SupervisorDashboard />
+    ) : (
+      <SuperAdminDashboard />
+    )
 
   return (
     <div className="App">

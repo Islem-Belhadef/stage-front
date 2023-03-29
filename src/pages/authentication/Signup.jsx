@@ -1,12 +1,17 @@
 // React & Router
+import { useState, useRef } from "react"
 import { Link } from "react-router-dom"
 
 // Assets
 import logo from "/logo.svg"
-import { Eye } from "iconsax-react"
+import { Eye, EyeSlash } from "iconsax-react"
 import image from "../../assets/login-cover.jpg"
 
 const Signup = () => {
+  const passwordInput = useRef()
+  const confirmPasswordInput = useRef()
+  const [showPassword, setShowPassword] = useState(false)
+
   return (
     <div className="h-screen w-screen flex">
       <div className="flex-1 flex flex-col items-center justify-center text-center">
@@ -55,17 +60,42 @@ const Signup = () => {
                   name="password"
                   id="password"
                   className="input mt-2"
+                  ref={passwordInput}
                 />
-                <Eye
-                  color="#383EBE"
-                  size={26}
-                  style={{
-                    position: "relative",
-                    left: "-10px",
-                    top: "-38px",
-                    cursor: "pointer",
-                  }}
-                />
+                {!showPassword && (
+                  <Eye
+                    color="#383EBE"
+                    size={26}
+                    style={{
+                      position: "relative",
+                      left: "-10px",
+                      top: "-38px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => {
+                      setShowPassword(true)
+                      passwordInput.current.type = "text"
+                      confirmPasswordInput.current.type = "text"
+                    }}
+                  />
+                )}
+                {showPassword && (
+                  <EyeSlash
+                    color="#383EBE"
+                    size={26}
+                    style={{
+                      position: "relative",
+                      left: "-10px",
+                      top: "-38px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => {
+                      setShowPassword(false)
+                      passwordInput.current.type = "password"
+                      confirmPasswordInput.current.type = "password"
+                    }}
+                  />
+                )}
               </div>
             </label>
             <label
@@ -78,6 +108,7 @@ const Signup = () => {
                 name="confirm-password"
                 id="confirm-password"
                 className="input mt-2"
+                ref={confirmPasswordInput}
               />
             </label>
             <button type="submit" className="primary-btn px-16 mt-10">

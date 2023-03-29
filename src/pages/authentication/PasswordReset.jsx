@@ -1,10 +1,16 @@
+// React & Router
+import { useState, useRef } from "react"
 import { Link } from "react-router-dom"
 
 // Assets
-import { Key, ArrowLeft, Eye } from "iconsax-react"
+import { Key, ArrowLeft, Eye, EyeSlash } from "iconsax-react"
 import image from "../../assets/informations-cover.jpg"
 
 const PasswordReset = () => {
+  const passwordInput = useRef()
+  const confirmPasswordInput = useRef()
+  const [showPassword, setShowPassword] = useState(false)
+
   return (
     <div
       className="h-screen w-screen bg-cover bg-center flex items-center justify-center"
@@ -33,26 +39,52 @@ const PasswordReset = () => {
                 name="password"
                 id="password"
                 className="input mt-2"
+                ref={passwordInput}
               />
-              <Eye
-                color="#383EBE"
-                size={26}
-                style={{
-                  position: "relative",
-                  left: "-10px",
-                  top: "-38px",
-                  cursor: "pointer",
-                }}
-              />
+              {!showPassword && (
+                <Eye
+                  color="#383EBE"
+                  size={26}
+                  style={{
+                    position: "relative",
+                    left: "-10px",
+                    top: "-38px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    setShowPassword(true)
+                    passwordInput.current.type = "text"
+                    confirmPasswordInput.current.type = "text"
+                  }}
+                />
+              )}
+              {showPassword && (
+                <EyeSlash
+                  color="#383EBE"
+                  size={26}
+                  style={{
+                    position: "relative",
+                    left: "-10px",
+                    top: "-38px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    setShowPassword(false)
+                    passwordInput.current.type = "password"
+                    confirmPasswordInput.current.type = "password"
+                  }}
+                />
+              )}
             </div>
           </label>
           <label htmlFor="confirm-password" className="label">
             Confirm password
             <input
-              type="confirm-password"
+              type="password"
               name="confirm-password"
               id="confirm-password"
               className="input mt-2"
+              ref={confirmPasswordInput}
             />
           </label>
           <button type="submit" className="primary-btn w-full mt-8">

@@ -17,6 +17,7 @@ import StudentDashboard from "./pages/StudentDashboard"
 import HODDashboard from "./pages/HODDashboard"
 import SupervisorDashboard from "./pages/SupervisorDashboard"
 import SuperAdminDashboard from "./pages/SuperAdminDashboard"
+import AddDemand from "./pages/AddDemand"
 
 function App() {
   const isAuthenticated = false
@@ -48,6 +49,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/internship/companies" element={<Companies />} />
           <Route path="/internship/offers" element={<Offers />} />
+          <Route path="/internship/demand" element={<AddDemand />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

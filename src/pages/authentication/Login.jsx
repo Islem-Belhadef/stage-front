@@ -4,9 +4,13 @@ import { Link } from "react-router-dom"
 // Assets
 import logo from "/logo.svg"
 import image from "../../assets/login-cover.jpg"
-import { Eye } from "iconsax-react"
+import { Eye, EyeSlash } from "iconsax-react"
+import { useRef, useState } from "react"
 
 const Login = () => {
+  const passwordInput = useRef()
+  const [showPassword, setShowPassword] = useState(false)
+
   return (
     <div className="h-screen w-screen flex">
       <div className="flex-1 flex flex-col items-center justify-center text-center">
@@ -49,17 +53,40 @@ const Login = () => {
                   name="password"
                   id="password"
                   className="input mt-2"
+                  ref={passwordInput}
                 />
-                <Eye
-                  color="#383EBE"
-                  size={26}
-                  style={{
-                    position: "relative",
-                    left: "-10px",
-                    top: "-38px",
-                    cursor: "pointer",
-                  }}
-                />
+                {!showPassword && (
+                  <Eye
+                    color="#383EBE"
+                    size={26}
+                    style={{
+                      position: "relative",
+                      left: "-10px",
+                      top: "-38px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => {
+                      setShowPassword(true)
+                      passwordInput.current.type = "text"
+                    }}
+                  />
+                )}
+                {showPassword && (
+                  <EyeSlash
+                    color="#383EBE"
+                    size={26}
+                    style={{
+                      position: "relative",
+                      left: "-10px",
+                      top: "-38px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => {
+                      setShowPassword(false)
+                      passwordInput.current.type = "password"
+                    }}
+                  />
+                )}
               </div>
             </label>
             <div className="flex justify-between w-full">
@@ -72,10 +99,7 @@ const Login = () => {
                 />
                 Remember me
               </label>
-              <Link
-                to="/login/forogt-password"
-                className="text-sm text-grayText"
-              >
+              <Link to="/login/password" className="text-sm text-grayText">
                 Forgot password
               </Link>
             </div>

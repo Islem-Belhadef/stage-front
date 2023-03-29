@@ -4,10 +4,10 @@ import image from "../../assets/informations-cover.jpg"
 const PersonalInformation = () => {
   return (
     <div
-      className="h-screen w-screen bg-cover bg-center flex items-center justify-center"
+      className="h-screen w-screen bg-cover bg-center flex items-center justify-center py-6"
       style={{ backgroundImage: `url(${image})` }}
     >
-      <div className="rounded-xl bg-white py-8 px-24">
+      <div className="rounded-xl bg-white py-8 px-24 h-full overflow-scroll">
         <h1 className="font-header text-3xl text-text font-semibold mb-2">
           Personal information
         </h1>

@@ -18,6 +18,7 @@ import HODDashboard from "./pages/HODDashboard"
 import SupervisorDashboard from "./pages/SupervisorDashboard"
 import SuperAdminDashboard from "./pages/SuperAdminDashboard"
 import AddDemand from "./pages/AddDemand"
+import AddOffer from "./pages/AddOffer"
 
 function App() {
   const isAuthenticated = false
@@ -50,6 +51,7 @@ function App() {
           <Route path="/internship/companies" element={<Companies />} />
           <Route path="/internship/offers" element={<Offers />} />
           <Route path="/internship/demand" element={<AddDemand />} />
+          <Route path="/internship/offer" element={<AddOffer />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

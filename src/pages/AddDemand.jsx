@@ -1,8 +1,6 @@
 // Components
 import Header from "../components/Header"
 
-// Assets
-
 const AddDemand = () => {
   return (
     <div className="bg-gray-50">
@@ -17,6 +15,18 @@ const AddDemand = () => {
           </p>
           <form className="mt-8">
             <div className="grid grid-cols-2 gap-x-8 gap-y-2 font-body">
+              <label htmlFor="title" className="label mb-4 col-span-2">
+                Internship title
+                <input
+                  type="text"
+                  name="title"
+                  id="title"
+                  className="input mt-2"
+                  minLength={10}
+                  maxLength={200}
+                  required
+                />
+              </label>
               <label htmlFor="company" className="label mb-4">
                 Company
                 <input

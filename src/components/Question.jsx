@@ -14,8 +14,8 @@ const Question = ({ question }) => {
     <div
       className={
         !showAnswer
-          ? "w-full rounded-lg bg-gray-50 py-5 px-6 flex flex-col gap-6 max-w-full cursor-pointer hover:bg-gray-200"
-          : "w-full rounded-lg bg-gray-100 py-5 px-6 flex flex-col gap-6 max-w-full cursor-pointer hover:bg-gray-200"
+          ? "w-full rounded-lg bg-white shadow-sm shadow-gray-200 py-5 px-6 flex flex-col gap-6 max-w-full cursor-pointer hover:shadow-md hover:shadow-gray-200 transition"
+          : "w-full rounded-lg bg-white shadow-sm shadow-gray-200 py-5 px-6 flex flex-col gap-6 max-w-full cursor-pointer hover:shadow-md hover:shadow-gray-200 transition"
       }
       onClick={() => {
         setShowAnswer(!showAnswer)

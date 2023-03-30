@@ -26,7 +26,7 @@ const Contact = () => {
   ]
 
   return (
-    <div>
+    <div className="bg-gray-50">
       <div
         className="bg-cover bg-top h-screen"
         style={{ backgroundImage: `url(${image})` }}
@@ -43,7 +43,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <div className="flex py-8 px-6 gap-12">
+      <div className="container mx-auto flex py-8 gap-12">
         <div className="flex-1 flex flex-col gap-6">
           <p className="font-body text-text text-center">
             Some FAQs that people ask us
@@ -58,7 +58,7 @@ const Contact = () => {
           <p className="font-body text-text text-center">
             Contact us directly through this form
           </p>
-          <form className="flex flex-col gap-6 p-8 rounded-lg bg-gray-50">
+          <form className="flex flex-col gap-6 p-8 rounded-lg bg-white shadow-md shadow-gray-200">
             <div className="flex gap-6">
               <label htmlFor="email" className="label">
                 First name
@@ -80,12 +80,22 @@ const Contact = () => {
               </label>
             </div>
             <label htmlFor="email" className="label">
-              Email address
+              Your email address
               <input
                 type="text"
                 name="email"
                 id="email"
                 className="input mt-2"
+              />
+            </label>
+            <label htmlFor="subject" className="label">
+              Subject
+              <input
+                type="text"
+                name="subject"
+                id="subject"
+                className="input mt-2"
+                maxLength={100}
               />
             </label>
             <label htmlFor="email" className="label">
@@ -95,6 +105,7 @@ const Contact = () => {
                 name="email"
                 id="email"
                 className="input mt-2"
+                maxLength={2000}
               />
             </label>
             <button type="submit" className="primary-btn mt-6">

@@ -10,7 +10,7 @@ import emptyBox from "../assets/empty-box.svg"
 const StudentDashboard = () => {
   return (
     <div className="bg-gray-50">
-      <Header fontColor="#272937" bgColor="#FFFFFF" />
+      <Header fontColor="#272937" bgColor="#FFFFFF" btnColor="#383EBE" />
       <div className="container mx-auto flex flex-col lg:flex-row gap-8 py-10">
         <div className="w-3/12 flex flex-col gap-8">
           <div className="bg-white rounded-xl shadow-lg shadow-gray-200 py-10 px-6 h-fit min-w-max">

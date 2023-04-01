@@ -21,8 +21,8 @@ import AddDemand from "./pages/AddDemand"
 import AddOffer from "./pages/AddOffer"
 
 function App() {
-  const isAuthenticated = false
-  const type = "student"
+  const isAuthenticated = true
+  const type = "admin"
   let dashboard
 
   dashboard =

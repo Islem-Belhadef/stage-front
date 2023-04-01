@@ -7,8 +7,6 @@ import { Key, ArrowLeft, Eye, EyeSlash } from "iconsax-react"
 import image from "../../assets/informations-cover.jpg"
 
 const PasswordReset = () => {
-  const passwordInput = useRef()
-  const confirmPasswordInput = useRef()
   const [showPassword, setShowPassword] = useState(false)
 
   return (
@@ -35,11 +33,10 @@ const PasswordReset = () => {
             New password
             <div className="flex flex-col items-end">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 id="password"
                 className="input mt-2"
-                ref={passwordInput}
               />
               {!showPassword && (
                 <Eye
@@ -80,11 +77,10 @@ const PasswordReset = () => {
           <label htmlFor="confirm-password" className="label">
             Confirm password
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="confirm-password"
               id="confirm-password"
               className="input mt-2"
-              ref={confirmPasswordInput}
             />
           </label>
           <button type="submit" className="primary-btn w-full mt-8">

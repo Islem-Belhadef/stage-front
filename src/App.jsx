@@ -18,6 +18,8 @@ import HODDashboard from "./pages/HODDashboard"
 import SupervisorDashboard from "./pages/SupervisorDashboard"
 import SuperAdminDashboard from "./pages/SuperAdminDashboard"
 import AddDemand from "./pages/AddDemand"
+import AddOffer from "./pages/AddOffer"
+import OfferDetails from "./pages/OfferDetails"
 
 function App() {
   const isAuthenticated = false

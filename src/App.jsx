@@ -19,6 +19,7 @@ import SupervisorDashboard from "./pages/SupervisorDashboard"
 import SuperAdminDashboard from "./pages/SuperAdminDashboard"
 import AddDemand from "./pages/AddDemand"
 import AddOffer from "./pages/AddOffer"
+import Profile from "./pages/Profile"
 
 function App() {
   const isAuthenticated = true
@@ -47,6 +48,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/signup/confirm" element={<ConfirmEmail />} />
           <Route path="/signup/info" element={<PersonalInformation />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/internship/companies" element={<Companies />} />
           <Route path="/internship/offers" element={<Offers />} />

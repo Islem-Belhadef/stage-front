@@ -119,7 +119,7 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { duration: 0 } }}
               exit={{ opacity: 0, transition: { duration: 0.2 } }}
-              href="/user/1526"
+              href="/profile"
               className="font-body text-text flex items-center gap-4 px-8 py-4 border-b border-b-gray-50 hover:bg-gray-100/20 rounded-t-xl"
             >
               <User size={26} color="#272937" />

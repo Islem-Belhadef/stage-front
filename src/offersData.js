@@ -28,7 +28,7 @@ export default [
     {
       id: 3,
       title: "Web developer",
-      spots: 3,
+      spots: 2,
       duration: 1,
       company: {
         name: "Ooredoo",

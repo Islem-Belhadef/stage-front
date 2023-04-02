@@ -6,6 +6,7 @@ import { ExportSquare, Location, Timer1, Briefcase } from "iconsax-react"
 
 const Offer = ({ offer }) => {
   return (
+    <Link to={`/internship/offer/${offer.id}`}>
     <div className="flex p-6 border-b border-b-gray-200 cursor-pointer hover:bg-gray-200/10">
       <div className="flex-1">
         <div className="flex items-center gap-8">
@@ -43,6 +44,7 @@ const Offer = ({ offer }) => {
         />
       </div>
     </div>
+    </Link>
   )
 }
 

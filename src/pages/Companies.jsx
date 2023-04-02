@@ -2,7 +2,7 @@
 import Header from "../components/Header"
 
 // Assets
-import image from "../assets/home-cover.jpg"
+import image from "../assets/companies-cover.jpg"
 import { Buliding, Location, Briefcase } from "iconsax-react"
 
 const Companies = () => {
@@ -54,13 +54,13 @@ const Companies = () => {
   return (
     <div className="bg-gray-50">
       <div
-        className="bg-cover bg-top"
+        className="bg-cover bg-top h-screen"
         style={{ backgroundImage: `url(${image})` }}
       >
         <Header fontColor="#FFFFFF" />
-        <div className="w-full pt-20 pb-32 flex items-center justify-center">
+        <div className="w-full h-screen pb-40 flex items-center justify-center">
           <div className="flex flex-col text-center items-center justify-center gap-3">
-            <h1 className="font-body font-medium text-3xl text-white">
+            <h1 className="font-body font-semibold text-5xl text-white">
               Partnered companies
             </h1>
             <p className="font-body text-sm text-yellow-300">

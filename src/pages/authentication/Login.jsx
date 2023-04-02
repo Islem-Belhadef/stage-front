@@ -8,7 +8,6 @@ import { Eye, EyeSlash } from "iconsax-react"
 import { useRef, useState } from "react"
 
 const Login = () => {
-  const passwordInput = useRef()
   const [showPassword, setShowPassword] = useState(false)
 
   return (
@@ -49,11 +48,10 @@ const Login = () => {
               Password
               <div className="flex flex-col items-end">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   id="password"
                   className="input mt-2"
-                  ref={passwordInput}
                 />
                 {!showPassword && (
                   <Eye

@@ -9,7 +9,7 @@ import { User, Setting, Logout, ArrowDown2 } from "iconsax-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 const Header = ({ fontColor, bgColor, btnColor }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(true)
   const [showMenu, setShowMenu] = useState(false)
 
   return (

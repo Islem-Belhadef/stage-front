@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { logout } from "../redux/auth"
+import { logout } from "../redux/authSlice"
 
 // Assets
 import { User, Setting, Logout, ArrowDown2 } from "iconsax-react"

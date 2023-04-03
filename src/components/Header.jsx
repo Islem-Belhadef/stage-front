@@ -1,7 +1,8 @@
 // React & Router
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { logout } from "../redux/auth"
 
 // Assets
 import { User, Setting, Logout, ArrowDown2 } from "iconsax-react"
@@ -11,6 +12,8 @@ import { motion, AnimatePresence } from "framer-motion"
 
 const Header = ({ fontColor, bgColor, btnColor }) => {
   const { isAuthenticated } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
+
   const [showMenu, setShowMenu] = useState(false)
 
   return (
@@ -142,6 +145,9 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
               animate={{ opacity: 1, transition: { duration: 0.2 } }}
               exit={{ opacity: 0, transition: { duration: 0 } }}
               className="font-body text-red-500 flex items-center gap-4 px-8 py-4 w-full hover:bg-gray-100/20  rounded-b-xl"
+              onClick={() => {
+                dispatch(logout())
+              }}
             >
               <Logout size={26} color="#EF4444" />
               Logout

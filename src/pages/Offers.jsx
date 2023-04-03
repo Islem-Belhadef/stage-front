@@ -4,11 +4,10 @@ import Offer from "../components/Offer"
 
 // Assets
 import emptyBox from "../assets/empty-box.svg"
-//data 
+//data
 import offers from "../offersData"
 
 const Offers = () => {
- 
   return (
     <div className="bg-gray-50">
       <Header fontColor="#272937" bgColor="#FFFFFF" btnColor="#383EBE" />

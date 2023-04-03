@@ -57,7 +57,7 @@ function App() {
           <Route path="/internship/offers" element={<Offers />} />
           <Route path="/internship/demand" element={<AddDemand />} />
           <Route path="/internship/offer" element={<AddOffer />} />
-          <Route path="/internship/offer/:offerId" element={<OfferDetails />} />
+          <Route path="/internship/offer/:id" element={<OfferDetails />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

@@ -11,8 +11,8 @@ const OfferDetails = () => {
   const [showApplyModal, setshowApplyModal] = useState(false)
   const [showSuccessModal, setshowSuccessModal] = useState(false)
 
-  const { offerId } = useParams()
-  const thisOffer = offers.find((offer) => offer.id == offerId)
+  const { id } = useParams()
+  const thisOffer = offers.find((offer) => offer.id == id)
 
   return (
     <main className="bg-gray-50">

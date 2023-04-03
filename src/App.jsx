@@ -24,11 +24,10 @@ import OfferDetails from "./pages/OfferDetails"
 import Profile from "./pages/Profile"
 
 function App() {
-  // const isAuthenticated = false
-  const type = "student"
   let dashboard
 
   const { isAuthenticated } = useSelector((state) => state.auth)
+  const { type } = useSelector((state) => state.auth)
 
   dashboard =
     type === "student" ? (

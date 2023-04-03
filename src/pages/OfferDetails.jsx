@@ -81,7 +81,7 @@ const OfferDetails = () => {
             <h2 className="font-body text-text text-xl font-bold ">
               Internship description
             </h2>
-            <p className="font-body text-graytext my-8">
+            <p className="font-body text-grayText my-8">
               Dorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
               turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus
               nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum

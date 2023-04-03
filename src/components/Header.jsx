@@ -1,6 +1,7 @@
 // React & Router
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 // Assets
 import { User, Setting, Logout, ArrowDown2 } from "iconsax-react"
@@ -9,7 +10,7 @@ import { User, Setting, Logout, ArrowDown2 } from "iconsax-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 const Header = ({ fontColor, bgColor, btnColor }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true)
+  const { isAuthenticated } = useSelector((state) => state.auth)
   const [showMenu, setShowMenu] = useState(false)
 
   return (

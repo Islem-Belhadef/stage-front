@@ -1,5 +1,6 @@
 // React & Router
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 // Pages
 import NotFound from "./pages/404"
@@ -23,9 +24,11 @@ import OfferDetails from "./pages/OfferDetails"
 import Profile from "./pages/Profile"
 
 function App() {
-  const isAuthenticated = false
+  // const isAuthenticated = false
   const type = "student"
   let dashboard
+
+  const { isAuthenticated } = useSelector((state) => state.auth)
 
   dashboard =
     type === "student" ? (

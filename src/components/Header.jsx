@@ -1,8 +1,8 @@
 // React & Router
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { logout } from "../redux/authSlice"
+import { logout } from "../app/authSlice"
 
 // Assets
 import { User, Setting, Logout, ArrowDown2 } from "iconsax-react"
@@ -11,10 +11,12 @@ import { User, Setting, Logout, ArrowDown2 } from "iconsax-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 const Header = ({ fontColor, bgColor, btnColor }) => {
-  const { isAuthenticated } = useSelector((state) => state.auth)
-  const dispatch = useDispatch()
-
   const [showMenu, setShowMenu] = useState(false)
+
+  const { isAuthenticated } = useSelector((state) => state.auth)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   return (
     <div style={{ backgroundColor: bgColor }}>
@@ -147,6 +149,8 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
               className="font-body text-red-500 flex items-center gap-4 px-8 py-4 w-full hover:bg-gray-100/20  rounded-b-xl"
               onClick={() => {
                 dispatch(logout())
+                setShowMenu(false)
+                navigate("/")
               }}
             >
               <Logout size={26} color="#EF4444" />

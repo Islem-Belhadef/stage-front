@@ -6,9 +6,8 @@ import { ExportSquare, Location, Timer1, Briefcase } from "iconsax-react"
 
 const Offer = ({ offer }) => {
   return (
-    <Link to={`/internship/offer/${offer.id}`}>
     <div className="flex p-6 border-b border-b-gray-200 cursor-pointer hover:bg-gray-200/10">
-      <div className="flex-1">
+      <Link to={`/internship/offer/${offer.id}`} className="flex-1">
         <div className="flex items-center gap-8">
           <div
             className="w-1/6 h-20 bg-center bg-no-repeat bg-contain"
@@ -35,16 +34,16 @@ const Offer = ({ offer }) => {
             {offer.spots} spots
           </p>
         </div>
-        <div></div>
-      </div>
+      </Link>
       <div className="flex items-center justify-center">
-        <ExportSquare
-          color="#383EBE"
-          className="cursor-pointer hover:scale-110 transition"
-        />
+        <Link to={`/internship/offer/${offer.id}`} target="_blank">
+          <ExportSquare
+            color="#383EBE"
+            className="cursor-pointer hover:scale-110 transition"
+          />
+        </Link>
       </div>
     </div>
-    </Link>
   )
 }
 

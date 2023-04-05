@@ -132,9 +132,15 @@ const StudentDashboard = () => {
           <h1 className="font-header text-text text-2xl font-bold mb-4">
             Nothing
           </h1>
-          <p className="font-body text-lightText">
-            There are no corresponding internship offers with the filters you
-            entered, try removing filters
+          <p className="font-body text-lightText px-20">
+            You don't have any internship demands or applications just yet, try{" "}
+            <Link to="/internship/demand" className="text-primary">
+              adding a new demand
+            </Link>{" "}
+            or{" "}
+            <Link to="/internship/offers" className="text-primary">
+              check our internship offers
+            </Link>
           </p>
           <p></p>
         </div>

@@ -11,14 +11,18 @@ const PasswordReset = () => {
 
   return (
     <div
-      className="h-screen w-screen bg-cover bg-center flex items-center justify-center"
-      style={{ backgroundImage: `url(${image})` }}
+      className="h-screen w-screen bg-cover bg-center flex sm:items-center justify-center sm:bg-[url('/src/assets/informations-cover.jpg')]"
+     
     >
       <div
-        className="rounded-xl bg-white w-min max-w-fit py-8 px-24 flex flex-col items-center"
-        style={{ minWidth: "36rem" }}
+        className="relative top-10 sm:static w-full px-10 sm:min-w-[36rem] rounded-xl bg-white sm:w-min max-w-fit py-8 sm:px-24 flex flex-col items-center"
+       
       >
-        <Key size={50} color="#7CDF64" className="m-6" />
+        <div className="flex justify-center items-center mb-5">
+          <Key size={50} color="#7CDF64" className="m-6 z-50" variant="Bold" /> 
+          <span className=" w-32 h-20 rounded-[50%] -rotate-[17deg] absolute" style={{backgroundColor:"rgba(48, 147, 58, 0.08)"}}></span>
+          <span className=" w-28 h-20 rounded-[50%] rotate-[22deg] absolute" style={{backgroundColor:"rgba(48, 147, 58, 0.08)"}}></span>
+        </div>
 
         <h1 className="font-header text-2xl text-text font-semibold mb-2">
           Reset password
@@ -38,7 +42,7 @@ const PasswordReset = () => {
                 id="password"
                 className="input mt-2"
               />
-              {!showPassword && (
+              {!showPassword ? 
                 <Eye
                   color="#383EBE"
                   size={26}
@@ -54,8 +58,8 @@ const PasswordReset = () => {
                     confirmPasswordInput.current.type = "text"
                   }}
                 />
-              )}
-              {showPassword && (
+              
+               :
                 <EyeSlash
                   color="#383EBE"
                   size={26}
@@ -71,7 +75,7 @@ const PasswordReset = () => {
                     confirmPasswordInput.current.type = "password"
                   }}
                 />
-              )}
+              }
             </div>
           </label>
           <label htmlFor="confirm-password" className="label">

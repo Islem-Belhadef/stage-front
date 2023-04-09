@@ -6,24 +6,28 @@ import { Link } from "react-router-dom"
 import logo from "/logo.svg"
 import { Eye, EyeSlash } from "iconsax-react"
 import image from "../../assets/login-cover.jpg"
+import circles from "../../assets/circles.svg"
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
     <div className="h-screen w-screen flex">
-      <div className="flex-1 flex flex-col items-center justify-center text-center">
-        <div className="w-2/3">
+      <div className="flex-1 flex flex-col items-center sm:justify-center text-center bg-primary sm:bg-white bg-[url('/src/assets/MobileCover.svg')] [background-position-x:center] sm:bg-none">
+        <div className="flex justify-center items-center bg-primary sm:bg-transparent w-20 aspect-square rounded-full absolute top-8 left-1/2 sm:left-6 translate-x-[-50%] sm:translate-x-0">
           <img
             src={logo}
             alt="logo"
-            style={{ width: "60px" }}
-            className="fixed top-6 left-6"
+            className="brightness-[5] sm:filter-none w-[60px]"
           />
-          <h1 className="font-header text-text font-semibold text-4xl mb-8">
+        </div>
+        <div className="absolute sm:static top-36 w-11/12 sm:w-2/3 px-5 py-7 sm:p-0 rounded-2xl sm:rounded-none text-left sm:text-center bg-white sm:bg-transparent z-50">
+          <h1 className="font-header text-text font-semibold text-xl sm:text-4xl mb-3 sm:mb-8">
             Create account
           </h1>
-          <p className="font-body text-lightText">
+          <p className="sm:hidden font-body text-lightText text-sm">Create your account to start looking for internship
+            opportunities</p>
+          <p className=" hidden sm:block font-body text-lightText">
             Create your account to start looking for internship opportunities
             alongside{" "}
             <Link
@@ -118,9 +122,10 @@ const Signup = () => {
       </div>
 
       <div
-        className="flex-1 bg-cover bg-center"
-        style={{ backgroundImage: `url(${image})` }}
-      ></div>
+        className="hidden sm:block flex-1 bg-[cover,cover] bg-center"
+        style={{ backgroundImage: `url(${circles}),url(${image})` }}
+      >
+      </div>
     </div>
   )
 }

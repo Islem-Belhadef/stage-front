@@ -7,23 +7,28 @@ import image from "../../assets/login-cover.jpg"
 import { Eye, EyeSlash } from "iconsax-react"
 import { useRef, useState } from "react"
 
+
+
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <div className="h-screen w-screen flex">
-      <div className="flex-1 flex flex-col items-center justify-center text-center">
-        <div className="w-2/3">
+    <div className="w-screen h-screen flex">
+      <div className="flex-1 flex flex-col items-center sm:justify-center text-center bg-primary sm:bg-white bg-[url('src/assets/MobileCover.svg')] [background-position-x:center] sm:bg-none">
+        <div className="flex justify-center items-center bg-primary sm:bg-transparent w-20 aspect-square rounded-full absolute top-8 left-1/2 sm:left-6 translate-x-[-50%] sm:translate-x-0">
           <img
             src={logo}
             alt="logo"
-            style={{ width: "60px" }}
-            className="fixed top-6 left-6"
+            className="brightness-[5] sm:filter-none w-[60px]"
           />
-          <h1 className="font-header text-text font-semibold text-4xl mb-8">
+        </div>
+        <div className="absolute sm:static top-36 w-11/12 sm:w-2/3 px-5 py-7 sm:p-0 rounded-2xl sm:rounded-none text-left sm:text-center bg-white sm:bg-transparent z-50">
+
+          <h1 className="font-header text-text font-semibold text-xl sm:text-4xl mb-3 sm:mb-8">
             Sign in
           </h1>
-          <p className="font-body text-lightText">
+          <p className="sm:hidden font-body text-lightText text-sm">Enter your login info to proceed </p>
+          <p className="hidden sm:block font-body text-lightText">
             Enter your login information to continue looking for internship
             opportunities alongside{" "}
             <Link
@@ -51,9 +56,9 @@ const Login = () => {
                   type={showPassword ? "text" : "password"}
                   name="password"
                   id="password"
-                  className="input mt-2"
+                  className="input mt-2 pl-10"
                 />
-                {!showPassword && (
+                {!showPassword ?
                   <Eye
                     color="#383EBE"
                     size={26}
@@ -65,11 +70,9 @@ const Login = () => {
                     }}
                     onClick={() => {
                       setShowPassword(true)
-                      passwordInput.current.type = "text"
+                      // passwordInput.current.type = "text"
                     }}
-                  />
-                )}
-                {showPassword && (
+                  /> :
                   <EyeSlash
                     color="#383EBE"
                     size={26}
@@ -81,10 +84,10 @@ const Login = () => {
                     }}
                     onClick={() => {
                       setShowPassword(false)
-                      passwordInput.current.type = "password"
+                      // passwordInput.current.type = "password"
                     }}
                   />
-                )}
+                }
               </div>
             </label>
             <div className="flex justify-between w-full">
@@ -108,11 +111,14 @@ const Login = () => {
           <Link to="/signup" className="text-secondary font-semibold">
             I don't have an account
           </Link>
+
         </div>
+
+
       </div>
 
       <div
-        className="flex-1 bg-cover bg-center"
+        className="hidden sm:block flex-1 bg-cover bg-center"
         style={{ backgroundImage: `url(${image})` }}
       ></div>
     </div>

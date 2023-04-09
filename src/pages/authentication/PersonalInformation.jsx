@@ -1,21 +1,31 @@
 // Assets
 import image from "../../assets/informations-cover.jpg"
+import logo from "/logo.svg"
+import mobileCover from "../../assets/MobileCover.svg"
+import {ArrowRight2 } from "iconsax-react"
 
 const PersonalInformation = () => {
   return (
     <div
-      className="h-screen w-screen bg-cover bg-center flex items-center justify-center py-6"
-      style={{ backgroundImage: `url(${image})` }}
+      className="h-screen sm:bg-cover sm:bg-center flex bg-primary sm:bg-transparent sm:items-center justify-center sm:py-6 bg-[url('/src/assets/MobileCover.svg')] [background-position-x:center] sm:bg-[url('/src/assets/informations-cover.jpg')]"
+ 
     >
-      <div className="rounded-xl bg-white py-8 px-24 h-full overflow-scroll">
-        <h1 className="font-header text-3xl text-text font-semibold mb-2">
+      <div className="flex sm:hidden justify-center items-center bg-primary sm:bg-transparent w-20 aspect-square rounded-full absolute top-8 left-1/2 sm:left-6 translate-x-[-50%] sm:translate-x-0">
+          <img
+            src={logo}
+            alt="logo"
+            className="brightness-[5] sm:filter-none w-[60px]"
+          />
+        </div>
+      <div className="w-full absolute top-36 sm:static sm:top-0  px-7 py-7 rounded-t-xl sm:w-auto sm:rounded-xl sm:py-8 sm:px-24 sm:h-full bg-white">
+        <h1 className="font-header text-xl sm:text-3xl text-text font-semibold mb-2">
           Personal information
         </h1>
-        <p className="font-body text-lightText">
+        <p className="font-body text-lightText text-sm sm:text-base">
           Please fill in these information to proceed
         </p>
         <form className="mt-8">
-          <div className="grid grid-cols-2 gap-x-8 gap-y-2">
+          <div className="flex flex-col sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-2">
             <label htmlFor="first-name" className="label mb-4">
               First name
               <input
@@ -95,8 +105,11 @@ const PersonalInformation = () => {
             <button type="reset" className="secondary-btn px-16">
               Reset
             </button>
-            <button type="submit" className="primary-btn px-16">
+            <button type="submit" className="primary-btn px-16 hidden sm:block">
               Confirm
+            </button>
+            <button type="submit" className="bg-primary rounded-lg px-4 py-3 sm:hidden">
+              <ArrowRight2 color="#FFFFFF" size={26} />
             </button>
           </div>
         </form>

@@ -14,7 +14,7 @@ const Login = () => {
 
   return (
     <div className="w-screen h-screen flex">
-      <div className="flex-1 flex flex-col items-center sm:justify-center text-center bg-primary sm:bg-white bg-[url('src/assets/MobileCover.svg')] [background-position-x:center] sm:bg-none">
+      <div className="flex-1 flex flex-col items-center sm:justify-center text-center bg-primary sm:bg-white bg-[url('/src/assets/MobileCover.svg')] [background-position-x:center] sm:bg-none">
         <div className="flex justify-center items-center bg-primary sm:bg-transparent w-20 aspect-square rounded-full absolute top-8 left-1/2 sm:left-6 translate-x-[-50%] sm:translate-x-0">
           <img
             src={logo}
@@ -70,7 +70,7 @@ const Login = () => {
                     }}
                     onClick={() => {
                       setShowPassword(true)
-                      // passwordInput.current.type = "text"
+                      
                     }}
                   /> :
                   <EyeSlash
@@ -84,7 +84,7 @@ const Login = () => {
                     }}
                     onClick={() => {
                       setShowPassword(false)
-                      // passwordInput.current.type = "password"
+                     
                     }}
                   />
                 }

@@ -6,7 +6,7 @@ const AddOffer = () => {
     <div className="bg-gray-50">
       <Header fontColor="#272937" bgColor="#FFFFFF" btnColor="#383EBE" />
       <div className="container mx-auto flex flex-col gap-8 py-10">
-        <div className="bg-white rounded-xl shadow-md shadow-gray-200 py-12 px-24">
+        <div className="bg-white rounded-xl shadow-md shadow-gray-200 p-8 sm:py-12 sm:px-24">
           <h1 className="font-header text-3xl text-text font-semibold mb-2">
             New offer
           </h1>

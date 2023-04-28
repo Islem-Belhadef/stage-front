@@ -6,7 +6,7 @@ const AddDemand = () => {
     <div className="bg-gray-50">
       <Header fontColor="#272937" bgColor="#FFFFFF" btnColor="#383EBE" />
       <div className="container mx-auto flex flex-col gap-8 py-10">
-        <div className="bg-white rounded-xl shadow-md shadow-gray-200 py-12 px-24">
+        <div className="bg-white rounded-xl shadow-md shadow-gray-200 p-8 sm:py-12 sm:px-24 ">
           <h1 className="font-header text-3xl text-text font-semibold mb-2">
             New demand
           </h1>
@@ -27,7 +27,7 @@ const AddDemand = () => {
                   required
                 />
               </label>
-              <label htmlFor="company" className="label mb-4">
+              <label htmlFor="company" className="label mb-4 col-span-2 sm:col-auto">
                 Company
                 <input
                   type="text"
@@ -39,7 +39,7 @@ const AddDemand = () => {
                   required
                 />
               </label>
-              <label htmlFor="supervisor-email" className="label mb-4">
+              <label htmlFor="supervisor-email" className="label mb-4 col-span-2 sm:col-auto">
                 Supervisor's email address
                 <input
                   type="email"

@@ -14,17 +14,17 @@ const Question = ({ question }) => {
     <div
       className={
         !showAnswer
-          ? "w-full rounded-lg bg-white shadow-sm shadow-gray-200 py-5 px-6 flex flex-col gap-6 max-w-full cursor-pointer hover:shadow-md hover:shadow-gray-200 transition"
-          : "w-full rounded-lg bg-white shadow-sm shadow-gray-200 py-5 px-6 flex flex-col gap-6 max-w-full cursor-pointer hover:shadow-md hover:shadow-gray-200 transition"
+          ? "w-full rounded-lg bg-white shadow-sm shadow-gray-200 py-5 px-4 flex flex-col gap-6 max-w-full cursor-pointer hover:shadow-md hover:shadow-gray-200 transition"
+          : "w-full rounded-lg bg-white shadow-sm shadow-gray-200 py-5 px-4 flex flex-col gap-6 max-w-full cursor-pointer hover:shadow-md hover:shadow-gray-200 transition"
       }
       onClick={() => {
         setShowAnswer(!showAnswer)
       }}
     >
-      <div className="flex justify-between items-center gap-8">
+      <div className="flex justify-between items-center gap-2 md:gap-8">
         <p className="text-text">{question.qst}</p>
-        {!showAnswer && <Add color="#616373" size={24} />}
-        {showAnswer && <Minus color="#616373" size={24} />}
+        {!showAnswer && <Add className="flex-none" color="#616373" size={24} />}
+        {showAnswer && <Minus className="flex-none" color="#616373" size={24} />}
       </div>
       <AnimatePresence>
         {showAnswer && (

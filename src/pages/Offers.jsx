@@ -17,7 +17,7 @@ const Offers = () => {
   const [showFilters, setshowFilters] = useState(false)
 
   return (
-    <div className="bg-gray-50 h-[100svh]">
+    <div className="bg-gray-50">
       <Header fontColor="#272937" bgColor="#FFFFFF" btnColor="#383EBE" />
       <div className="container mx-auto flex flex-col lg:flex-row gap-8 py-10">
 
@@ -56,7 +56,7 @@ const Offers = () => {
       </div>
 
       {showFilters && (
-        <div className="fixed bg-black bg-opacity-80 inset-0 flex  items-center">
+        <div className="fixed bg-slate-800 backdrop-blur-sm bg-opacity-70 inset-0 flex  items-center">
           <div className="w-full sm:w-3/4 max-w-xl bg-white rounded-xl py-7 px-6 h-fit mx-auto">
             <div className="flex items-center justify-between">
               <h1 className="font-header text-text text-2xl font-bold">Filters</h1>

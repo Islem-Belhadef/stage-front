@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 const SuccessModal = ({ setshowSuccessModal }) => {
   return (
-    <div className=" flex justify-center items-center fixed bg-black bg-opacity-80 top-0 bottom-0 right-0 left-0">
+    <div className=" flex justify-center items-center fixed bg-slate-800 backdrop-blur-sm bg-opacity-70 top-0 bottom-0 right-0 left-0">
       <div
         className=" bg-white h-fit px-11 py-7 rounded-xl"
         style={{ width: "clamp(350px,46%,600px)" }}
@@ -23,7 +23,7 @@ const SuccessModal = ({ setshowSuccessModal }) => {
               setshowSuccessModal(false)
             }}
           >
-            Cancel
+            Ok
           </button>
         </div>
       </div>

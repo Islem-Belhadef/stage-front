@@ -5,6 +5,7 @@ import supervisorImage from "../assets/supervisor.svg"
 import hodImage from "../assets/hod.svg"
 
 const Account = ({ account }) => {
+
   let img =
     account.type === "student"
       ? studentImage
@@ -21,7 +22,7 @@ const Account = ({ account }) => {
             style={{ backgroundImage: `url(${img})` }}
           ></div>
           <div>
-            <h1 className="font-body text-text text-xl font-bold">
+            <h1 className="font-body text-text text-lg sm:text-xl font-bold">
               {account.lastName} {account.firstName}
             </h1>
             <p className="text-primary">{account.email}</p>

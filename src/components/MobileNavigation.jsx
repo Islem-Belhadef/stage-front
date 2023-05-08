@@ -9,7 +9,7 @@ const MobileNavigation = ({ showSideMenu, setShowSideMenu}) => {
 
     const { isAuthenticated } = useSelector((state) => state.auth)
     return (
-        <div className={showSideMenu ? "fixed bg-black bg-opacity-25 top-0 bottom-0 left-0 right-0 pointer-events-auto transition-colors duration-700 " : "fixed top-0 bottom-0 left-0 right-0 pointer-events-none"}
+        <div className={showSideMenu ? "fixed bg-black bg-opacity-25 top-0 bottom-0 left-0 right-0 pointer-events-auto transition-colors duration-700 !z-[9999]" : "fixed top-0 bottom-0 left-0 right-0 pointer-events-none !z-[9999]"}
             onClick={() => { setShowSideMenu(!showSideMenu)
                  
             }}

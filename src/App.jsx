@@ -1,5 +1,5 @@
 // React & Router
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 
 // Pages
@@ -14,14 +14,20 @@ import ForgotPassword from "./pages/authentication/ForgotPassword"
 import PasswordReset from "./pages/authentication/PasswordReset"
 import Companies from "./pages/Companies"
 import Offers from "./pages/Offers"
-import StudentDashboard from "./pages/StudentDashboard"
-import HODDashboard from "./pages/HODDashboard"
+import StudentDashboard from "./pages/StudentDashboard/StudentDashboard"
+import HODDashboard from "./pages/HODDashboard/HODDashboard"
 import SupervisorDashboard from "./pages/SupervisorDashboard"
 import SuperAdminDashboard from "./pages/SuperAdminDashboard"
 import AddDemand from "./pages/AddDemand"
 import AddOffer from "./pages/AddOffer"
 import OfferDetails from "./pages/OfferDetails"
 import Profile from "./pages/Profile"
+import StudentApplications from "./pages/StudentDashboard/StudentApplications"
+import StudentDemands from "./pages/StudentDashboard/StudentDemands"
+import HODDemands from "./pages/HODDashboard/HODDemands"
+import HODApplications from "./pages/HODDashboard/HODApplications"
+import AddAccount from "./pages/AddAccount"
+
 
 function App() {
   let dashboard
@@ -44,7 +50,23 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={isAuthenticated ? dashboard : <Home />} />
+          <Route path="/" element={isAuthenticated ? dashboard : <Home />} >
+            {type === "student" &&(
+               <> 
+                 <Route path="mydemands" element={<StudentDemands />} />
+                 <Route path="myapplications" element={<StudentApplications />} />
+                 <Route index element={<Navigate to="/mydemands" />} />
+              </> 
+             )} 
+            {type === "hod" &&(
+              <>
+                 <Route path="mydemands" element={<HODDemands />} />
+                 <Route path="myapplications" element={<HODApplications />} />
+                 <Route index element={<Navigate to="/mydemands" />} />
+              </>
+            )}
+           
+          </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/login/password" element={<ForgotPassword />} />
           <Route path="/login/reset" element={<PasswordReset />} />
@@ -56,8 +78,9 @@ function App() {
           <Route path="/internship/companies" element={<Companies />} />
           <Route path="/internship/offers" element={<Offers />} />
           <Route path="/internship/demand" element={<AddDemand />} />
-          <Route path="/internship/offer" element={<AddOffer />} />
+          <Route path="/internship/offer" element={type == "supervisor" ? <AddOffer /> : <NotFound />} />
           <Route path="/internship/offer/:id" element={<OfferDetails />} />
+          <Route path="/addaccount" element={<AddAccount />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

@@ -165,22 +165,25 @@ const Profile = () => {
             </motion.div>
           )}
         </div>
-        <div className="px-10 pb-10 flex items-center justify-center gap-6">
-          <button
-            type="reset"
-            className="secondary-btn w-52"
-            onClick={(e) => {
-              e.preventDefault()
-              setEditPersonalInfo(false)
-              setEditAccountInfo(false)
-            }}
-          >
-            Cancel
-          </button>
-          <button type="submit" className="primary-btn w-52">
-            Save changes
-          </button>
-        </div>
+        {(editPersonalInfo || editAccountInfo) &&  (
+          <div className="px-10 pb-10 flex items-center justify-center gap-6">
+            <button
+              type="reset"
+              className="secondary-btn w-52"
+              onClick={(e) => {
+                e.preventDefault()
+                setEditPersonalInfo(false)
+                setEditAccountInfo(false)
+              }}
+            >
+              Cancel
+            </button>
+            <button type="submit" className="primary-btn w-52">
+              Save changes
+            </button>
+          </div>
+          )
+        }
       </div>
     </div>
   )

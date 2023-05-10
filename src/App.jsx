@@ -27,6 +27,7 @@ import StudentDemands from "./pages/StudentDashboard/StudentDemands"
 import HODDemands from "./pages/HODDashboard/HODDemands"
 import HODApplications from "./pages/HODDashboard/HODApplications"
 import AddAccount from "./pages/AddAccount"
+import StudentInternships from "./pages/StudentDashboard/StudentInternships"
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
                <> 
                  <Route path="mydemands" element={<StudentDemands />} />
                  <Route path="myapplications" element={<StudentApplications />} />
+                 <Route path="myinternships" element={<StudentInternships />} />
                  <Route index element={<Navigate to="/mydemands" />} />
               </> 
              )} 

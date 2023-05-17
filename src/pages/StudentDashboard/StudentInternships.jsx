@@ -65,7 +65,7 @@ const StudentInternships = () => {
             </div>
 
 
-            <h1 className="text-text font-header text-xl font-medium mt-6 mb-4 ml-3">Finished internships</h1>
+            <h1 className="text-text font-header text-xl font-medium mt-9 mb-4 ml-3">Finished internships</h1>
 
             <div className="bg-white rounded-xl shadow-sm ">
                 <div className="border-b border-gray-200 px-4 py-5 sm:px-10 sm:py-6">

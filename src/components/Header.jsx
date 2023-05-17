@@ -35,9 +35,9 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
       .then((res) => {
         if (res.status === 200) {
           console.log('logged out')
-          dispatch(logout())
           cookies.remove('token')
           cookies.remove('type')
+          dispatch(logout())
           setShowMenu(false)
           navigate("/")
         }

@@ -34,7 +34,7 @@ const AddAccount = () => {
                                         checked={type == "student"}
                                         onChange={(e) => { setType("student") }}
                                     />
-                                    <label className="peer-checked/student:text-primary peer-checked/student:bg-primary peer-checked/student:bg-opacity-10 peer-checked/student:border-primary border-lightText text-lightText cursor-pointer border font-medium rounded-md p-2" htmlFor="student">
+                                    <label className="peer-checked/student:text-primary peer-checked/student:bg-primary peer-checked/student:bg-opacity-10 peer-checked/student:border-primary border-lightText text-lightText cursor-pointer border font-medium rounded-md p-2 transition duration-150" htmlFor="student">
                                         student
                                     </label>
 
@@ -43,7 +43,7 @@ const AddAccount = () => {
                                         onChange={(e) => { setType("supervisor") }}
 
                                     />
-                                    <label className="peer-checked/supervisor:text-primary peer-checked/supervisor:bg-primary peer-checked/supervisor:bg-opacity-10 peer-checked/supervisor:border-primary border-lightText text-lightText cursor-pointer border font-medium rounded-md p-2" htmlFor="supervisor">
+                                    <label className="peer-checked/supervisor:text-primary peer-checked/supervisor:bg-primary peer-checked/supervisor:bg-opacity-10 peer-checked/supervisor:border-primary border-lightText text-lightText cursor-pointer border font-medium rounded-md p-2 transition duration-150" htmlFor="supervisor">
                                         supervisor
                                     </label>
 
@@ -52,7 +52,7 @@ const AddAccount = () => {
                                         onChange={(e) => { setType("hod") }}
 
                                     />
-                                    <label className="peer-checked/head-of-dep:text-primary peer-checked/head-of-dep:bg-primary peer-checked/head-of-dep:bg-opacity-10 peer-checked/head-of-dep:border-primary border-lightText text-lightText cursor-pointer border font-medium rounded-md p-2" htmlFor="head-of-dep">
+                                    <label className="peer-checked/head-of-dep:text-primary peer-checked/head-of-dep:bg-primary peer-checked/head-of-dep:bg-opacity-10 peer-checked/head-of-dep:border-primary border-lightText text-lightText cursor-pointer border font-medium rounded-md p-2 transition duration-150" htmlFor="head-of-dep">
                                         head of dep
                                     </label>
                                 </div>

@@ -30,7 +30,7 @@ const Offer = ({ offer }) => {
           </p>
           <p className="flex gap-2 items-center">
             <Timer1 color="#9D9CAC" size={18} />
-            {offer.duration} months
+            {offer.duration} days
           </p>
           <p className="flex gap-2 items-center">
             <Briefcase color="#9D9CAC" size={18} />

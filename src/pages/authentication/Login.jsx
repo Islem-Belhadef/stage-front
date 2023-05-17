@@ -165,7 +165,7 @@ const Login = () => {
               </Link>
             </div>
 
-            <input className="primary-btn mt-10" type="submit" value="Login" />
+            <input className="primary-btn mt-10 cursor-pointer w-full max-w-sm" type="submit" value="Login" />
           </form>
           <Link to="/signup" className="text-secondary font-semibold">
             I don't have an account

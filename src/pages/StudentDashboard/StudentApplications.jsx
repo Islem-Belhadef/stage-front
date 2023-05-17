@@ -31,9 +31,8 @@ const StudentApplications = () => {
     <div className="flex flex-col lg:flex-row gap-8">
       <div className="flex flex-col gap-8">
         <ApplicationsStats showButton={true}  total={applications.length} pending={applications.filter((application)=>application.status == 0||application.status == 1).length} approved={applications.filter((application)=>application.status == 3).length} rejected={applications.filter((application)=>application.status == 2||application.status == 4).length} />
-
       </div>
-
+      
       {loading && (
         <div className="bg-white rounded-xl shadow-md flex-1">
           <Loader />

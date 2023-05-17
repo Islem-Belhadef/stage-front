@@ -32,8 +32,8 @@ const StudentDemands = () => {
     <div className="flex flex-col lg:flex-row gap-8">
       <div className="flex flex-col gap-8">
         <DemandStats showButton={true} total={demands.length} pending={demands.filter((demand)=>demand.status == 0||demand.status == 1).length} approved={demands.filter((demand)=>demand.status == 3).length} rejected={demands.filter((demand)=>demand.status == 2||demand.status == 4).length} />
-
       </div>
+      
       {loading && (
           <div className="bg-white rounded-xl shadow-md flex-1">
             <Loader />

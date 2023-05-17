@@ -1,3 +1,7 @@
+//react
+import { useState, useEffect } from "react"
+import axios from 'axios'
+
 // Components
 import Header from "../components/Header"
 import Offer from "../components/Offer"
@@ -9,12 +13,30 @@ import OffersFilter from "../components/OffersFilter"
 
 //data
 import offers from "../offersData"
-import { useState } from "react"
+import Loader from "../components/Loader"
+
 
 
 const Offers = () => {
 
+
+
+  const [results, setResults] = useState([])
   const [showFilters, setshowFilters] = useState(false)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    axios.get('http://127.0.0.1:8000/api/offers')
+      .then(res => {
+        console.log(res)
+        setResults(res.data.offers)
+        setLoading(false)
+      }).catch(err => {
+        console.log(err)
+      })
+  }, [])
+
+  console.log('these are the fetched offers n 0', results)
 
   return (
     <div className="bg-gray-50">
@@ -25,34 +47,46 @@ const Offers = () => {
           <h1 className="font-header text-text text-2xl font-bold">Filters</h1>
           <OffersFilter />
         </div>
-        {offers.length > 0 && (
+
+        {loading && (
           <div className="bg-white rounded-xl shadow-md flex-1">
-            <div className="flex justify-between items-center px-6 py-4 border-b border-b-gray-200">
-              <p className=" font-header font-medium text-grayText  ">Showing 25 offers</p>
-              <button className="lg:hidden flex items-center gap-1 font-medium text-text text-xl"
-                onClick={() => { setshowFilters(true) }}
-              >
-                <Setting5 />
-                filter
-              </button>
+            <Loader />
+            <Loader />
+            <Loader />
+          </div>)}
+
+        {!loading && (
+          results.length > 0
+            ?
+            <div className="bg-white rounded-xl shadow-md flex-1">
+              <div className="flex justify-between items-center px-6 py-4 border-b border-b-gray-200">
+                <p className=" font-header font-medium text-grayText  ">{`Showing ${results.length} offers`}</p>
+                <button className="lg:hidden flex items-center gap-1 font-medium text-text text-xl"
+                  onClick={() => { setshowFilters(true) }}
+                >
+                  <Setting5 />
+                  filter
+                </button>
+              </div>
+              {results.map((result) => {
+                return <Offer offer={result} key={result.id} />
+              })}
+
             </div>
-            {offers.map((offer) => {
-              return <Offer offer={offer} key={offer.title} />
-            })}
-          </div>
+            :
+            <div className="bg-white rounded-xl flex-1 pt-10 sm:pt-0 pb-10 px-10 flex flex-col justify-center items-center">
+              <img src={emptyBox} alt="empty box" className="w-2/3 min-w-[15rem]" />
+              <h1 className="font-header text-text text-xl sm:text-2xl font-bold mb-4">
+                Nothing
+              </h1>
+              <p className="font-body text-lightText">
+                There are no corresponding internship offers with the filters you
+                entered, try removing filters
+              </p>
+            </div>
+
         )}
-        {offers.length === 0 && (
-          <div className="bg-white rounded-xl flex-1 pt-10 sm:pt-0 pb-10 px-10 flex flex-col justify-center items-center">
-            <img src={emptyBox} alt="empty box" className="w-2/3 min-w-[15rem]" />
-            <h1 className="font-header text-text text-xl sm:text-2xl font-bold mb-4">
-              Nothing
-            </h1>
-            <p className="font-body text-lightText">
-              There are no corresponding internship offers with the filters you
-              entered, try removing filters
-            </p>
-          </div>
-        )}
+
       </div>
 
       {showFilters && (

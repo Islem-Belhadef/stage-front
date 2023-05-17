@@ -1,16 +1,71 @@
 // React & Router
-import { Link } from "react-router-dom"
+import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import axios from 'axios'
+
+import { useDispatch } from "react-redux"
+import { login } from "../../app/authSlice"
+import { useCookies } from "react-cookie"
 
 // Assets
 import logo from "/logo.svg"
 import image from "../../assets/login-cover.jpg"
 import { Eye, EyeSlash } from "iconsax-react"
-import { useRef, useState } from "react"
-
 
 
 const Login = () => {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const [message, setMessage] = useState(false)
+  const [text, setText] = useState("")
+
+  const [cookies, setCookie, removeCookie] = useCookies();
+
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+
+
+    axios.post('http://127.0.0.1:8000/api/auth/login', { email, password })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data);
+          setCookie('token', res.data.token)
+          setCookie('type', res.data.role)
+          dispatch(login())
+          setText('successfuly logged in')
+          setMessage(true)
+          setTimeout(async () => {
+            setMessage(false);
+            window.location.replace('/')
+
+          }, 1500)
+        }
+
+
+      })
+      .catch(err => {
+        if (err.response.status === 401) {
+          setText('invalid credentials please try again')
+          setMessage(true)
+          setTimeout(() => {
+            setMessage(false);
+          }, 3000)
+          console.log('invalid credentials')
+
+        } else {
+          console.log('login failed')
+        }
+
+      })
+
+  }
 
   return (
     <div className="w-screen h-screen flex">
@@ -39,7 +94,9 @@ const Login = () => {
               University of Constantine 2 Abdelhamid Mehri
             </Link>
           </p>
-          <form className="flex flex-col items-center text-center font-body w-full mt-8 mb-6">
+          <form className="flex flex-col items-center text-center font-body w-full mt-8 mb-6"
+            onSubmit={handleLogin}
+          >
             <label htmlFor="email" className="label mb-4">
               Email address
               <input
@@ -47,6 +104,7 @@ const Login = () => {
                 name="email"
                 id="email"
                 className="input mt-2"
+                onChange={(e) => { setEmail(e.target.value); console.log(email) }}
               />
             </label>
             <label htmlFor="password" className="label">
@@ -57,6 +115,8 @@ const Login = () => {
                   name="password"
                   id="password"
                   className="input mt-2 pl-10"
+                  onChange={(e) => { setPassword(e.target.value); console.log(password) }}
+
                 />
                 {!showPassword ?
                   <Eye
@@ -70,7 +130,7 @@ const Login = () => {
                     }}
                     onClick={() => {
                       setShowPassword(true)
-                      
+
                     }}
                   /> :
                   <EyeSlash
@@ -84,7 +144,7 @@ const Login = () => {
                     }}
                     onClick={() => {
                       setShowPassword(false)
-                     
+
                     }}
                   />
                 }
@@ -104,9 +164,8 @@ const Login = () => {
                 Forgot password
               </Link>
             </div>
-            <button type="submit" className="primary-btn mt-10">
-              Login
-            </button>
+
+            <input className="primary-btn mt-10" type="submit" value="Login" />
           </form>
           <Link to="/signup" className="text-secondary font-semibold">
             I don't have an account
@@ -121,6 +180,8 @@ const Login = () => {
         className="hidden sm:block flex-1 bg-cover bg-center"
         style={{ backgroundImage: `url(${image})` }}
       ></div>
+      {message && <div className="absolute top-12 w-fit left-1/2 text-lg -translate-x-1/2 -translate-y-1/2 rounded-md bg-red-500 text-white px-8 py-4">{text}</div>}
+
     </div>
   )
 }

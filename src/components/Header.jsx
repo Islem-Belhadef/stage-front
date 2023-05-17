@@ -3,23 +3,50 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { logout } from "../app/authSlice"
-import MobileNavigation from "./MobileNavigation"
+import { Cookies } from "react-cookie"
+import authAxios from "../api/axios"
+
 
 // Assets
-import { User, Setting, Logout, ArrowDown2, HambergerMenu } from "iconsax-react"
+import { User, Setting, Logout as LogoutIcon, ArrowDown2, HambergerMenu } from "iconsax-react"
+import MobileNavigation from "./MobileNavigation"
 
 // Plugins
 import { motion, AnimatePresence } from "framer-motion"
 import Avatar from "./Avatar"
+
+
+
+
 
 const Header = ({ fontColor, bgColor, btnColor }) => {
   const [showMenu, setShowMenu] = useState(false)
   const [showSideMenu, setShowSideMenu] = useState(false)
 
   const { isAuthenticated } = useSelector((state) => state.auth)
+  const cookies = new Cookies()
+
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const Logout = () => {
+    authAxios.post('/auth/logout')
+      .then((res) => {
+        if (res.status === 200) {
+          console.log('logged out')
+          dispatch(logout())
+          cookies.remove('token')
+          cookies.remove('type')
+          setShowMenu(false)
+          navigate("/")
+        }
+      }).catch((err) => {
+        console.log(err)
+      })
+
+  }
+
 
   return (
     <div style={{ backgroundColor: bgColor }}>
@@ -131,27 +158,27 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
         )}
       </nav>
       <AnimatePresence>
-        
+
         {showMenu && (
           <motion.div
             key="menu"
             initial={{ height: 0 }}
             animate={{ height: "auto" }}
-            exit={{ height: 0  }}
+            exit={{ height: 0 }}
             className={
               bgColor == "#FFFFFF"
-                ? "rounded-xl bg-white shadow-lg shadow-gray-100 absolute right-10 top-20 w-72 transition"
-                : "rounded-xl bg-white absolute right-10 top-20 w-72 transition"
+                ? "rounded-xl bg-white shadow-lg shadow-gray-100 absolute right-10 top-20 w-72 transition z-[9998]"
+                : "rounded-xl bg-white absolute right-10 top-20 w-72 transition z-[9998]"
             }
           >
             <motion.div
-              initial={{ opacity: 0}}
+              initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { duration: 0 } }}
               exit={{ opacity: 0, transition: { duration: 0.2 } }}
               className="block sm:hidden px-8 py-4 border-b border-b-gray-200"
             >
-                <p className="text-lightText text-sm ">signed in as </p>
-                <p>Mohamed Achraf Damous</p>
+              <p className="text-lightText text-sm ">signed in as </p>
+              <p>Mohamed Achraf Damous</p>
             </motion.div>
             <motion.a
               initial={{ opacity: 0 }}
@@ -179,13 +206,14 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
               animate={{ opacity: 1, transition: { duration: 0.2 } }}
               exit={{ opacity: 0, transition: { duration: 0 } }}
               className="font-body text-red-500 flex items-center gap-4 px-8 py-4 w-full hover:bg-gray-100/20  rounded-b-xl"
-              onClick={() => {
-                dispatch(logout())
-                setShowMenu(false)
-                navigate("/")
-              }}
+              // onClick={() => {
+              //   dispatch(logout())
+              //   setShowMenu(false)
+              //   navigate("/")
+              // }}
+              onClick={Logout}
             >
-              <Logout size={26} color="#EF4444" />
+              <LogoutIcon size={26} color="#EF4444" />
               Logout
             </motion.button>
           </motion.div>

@@ -30,29 +30,36 @@ import AddAccount from "./pages/AddAccount"
 import StudentInternships from "./pages/StudentDashboard/StudentInternships"
 
 
-function App() {
-  let dashboard
 
-  const { isAuthenticated } = useSelector((state) => state.auth)
-  const { type } = useSelector((state) => state.auth)
+function App() {
+
+const { isAuthenticated } = useSelector((state) => state.auth)
+const { type } = useSelector((state) => state.auth)
+
+
+let dashboard
+
+// type is return from cookie type string so we use ==
+// 0 => student | 1 => hod | 2 => supervisor| 3 => superAdmin
 
   dashboard =
-    type === "student" ? (
+    type == 0 ? (
       <StudentDashboard />
-    ) : type === "hod" ? (
+    ) : type == 1 ? (
       <HODDashboard />
-    ) : type === "supervisor" ? (
+    ) : type == 2 ? (
       <SupervisorDashboard />
-    ) : (
-      <SuperAdminDashboard />
-    )
+    ) : type == 3 ?(
+      <SuperAdminDashboard />)
+      :<NotFound />
+    
 
   return (
     <div className="App">
       <Router>
         <Routes>
           <Route path="/" element={isAuthenticated ? dashboard : <Home />} >
-            {type === "student" &&(
+            {type == 0 &&(
                <> 
                  <Route path="mydemands" element={<StudentDemands />} />
                  <Route path="myapplications" element={<StudentApplications />} />
@@ -60,7 +67,7 @@ function App() {
                  <Route index element={<Navigate to="/mydemands" />} />
               </> 
              )} 
-            {type === "hod" &&(
+            {type == 1 &&(
               <>
                  <Route path="mydemands" element={<HODDemands />} />
                  <Route path="myapplications" element={<HODApplications />} />

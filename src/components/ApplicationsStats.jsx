@@ -3,14 +3,14 @@ import { Link } from "react-router-dom"
 //assets
 import { Add } from "iconsax-react"
 
-const ApplicationsStats = ({ showButton }) => {
+const ApplicationsStats = ({ showButton , total,pending,approved,rejected }) => {
 
 
     return (
         <div className="flex sm:flex-row lg:flex-col items-center sm:items-center lg:items-start justify-between bg-white rounded-xl shadow-lg shadow-gray-200 py-5 px-5 sm:pl-10 sm:pr-5 lg:px-6 lg:py-10 h-fit min-w-max ">
             <div className="flex sm:flex-col gap-3 ">
                 <h1 className="font-header text-text text-lg sm:text-xl font-bold mr-3 sm:m-0">
-                    3 Applications
+                    {total} Applications
                 </h1>
                 <div className="hidden lg:flex lg:flex-col mt-3 font-body text-text gap-2">
                     <p className="mb-3">You have :</p>
@@ -25,7 +25,7 @@ const ApplicationsStats = ({ showButton }) => {
                             >
                                 <circle cx="7.5" cy="7.5" r="7.5" fill="#D9D9D9" />
                             </svg>
-                            1 pending applications
+                            {pending} pending applications
                         </p>
                         <button className="text-secondary font-semibold hidden lg:block">check</button>
                     </div>
@@ -40,7 +40,7 @@ const ApplicationsStats = ({ showButton }) => {
                             >
                                 <circle cx="7.5" cy="7.5" r="7.5" fill="#50E379" />
                             </svg>
-                            0 approved applications
+                            {approved} approved applications
                         </p>
                         <button className="text-secondary font-semibold hidden lg:block">check</button>
                     </div>
@@ -55,7 +55,7 @@ const ApplicationsStats = ({ showButton }) => {
                             >
                                 <circle cx="7.5" cy="7.5" r="7.5" fill="#F64A4A" />
                             </svg>
-                            1 rejected applications
+                            {rejected} rejected applications
                         </p>
                         <button className="text-secondary font-semibold hidden lg:block">check</button>
                     </div>
@@ -65,19 +65,19 @@ const ApplicationsStats = ({ showButton }) => {
                     <p className="flex items-center text-text font-semibold mr-2">
                         <div className="flex items-center justify-center w-3 h-3 rounded-full bg-[#D9D9D9] mr-1 sm:mr-3"></div>
 
-                        0
+                        {pending}
                         <p className="ml-1 hidden sm:block font-normal">pending</p>
                     </p>
                     <p className="flex items-center text-text font-semibold mr-2">
                         <div className="flex items-center justify-center w-3 h-3 rounded-full bg-[#50E379] mr-1 sm:mr-3"></div>
 
-                        1
+                        {approved}
                         <p className="ml-1 hidden sm:block font-normal">approved</p>
                     </p>
                     <p className="flex items-center text-text font-semibold mr-2">
                         <div className="flex items-center justify-center w-3 h-3 rounded-full bg-[#F64A4A] mr-1 sm:mr-3"></div>
 
-                        4
+                        {rejected}
                         <p className="ml-1 hidden sm:block font-normal">rejected</p>
                     </p>
                 </div>

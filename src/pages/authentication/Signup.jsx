@@ -1,6 +1,8 @@
 // React & Router
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom"
+import axios from "axios"
+import { useDispatch } from "react-redux"
 
 // Assets
 import logo from "/logo.svg"
@@ -10,6 +12,41 @@ import circles from "../../assets/circles.svg"
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false)
+
+  const dispatch = useDispatch()
+
+  const handleSignup = (e) => {
+    e.preventDefault()
+
+    axios
+      .post("http://127.0.0.1:8000/api/auth/signup", { email, password })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data)
+          setCookie("token", res.data.token)
+          setCookie("type", 0)
+          dispatch(login())
+          setText("successfuly logged in")
+          setMessage(true)
+          setTimeout(async () => {
+            setMessage(false)
+            window.location.replace("/")
+          }, 1500)
+        }
+      })
+      .catch((err) => {
+        if (err.response.status === 401) {
+          setText("invalid credentials please try again")
+          setMessage(true)
+          setTimeout(() => {
+            setMessage(false)
+          }, 3000)
+          console.log("invalid credentials")
+        } else {
+          console.log("login failed")
+        }
+      })
+  }
 
   return (
     <div className="h-screen w-screen flex">
@@ -25,8 +62,9 @@ const Signup = () => {
           <h1 className="font-header text-text font-semibold text-xl sm:text-4xl mb-3 sm:mb-8">
             Create account
           </h1>
-          <p className="sm:hidden font-body text-lightText text-sm">Create your account to start looking for internship
-            opportunities</p>
+          <p className="sm:hidden font-body text-lightText text-sm">
+            Create your account to start looking for internship opportunities
+          </p>
           <p className=" hidden sm:block font-body text-lightText">
             Create your account to start looking for internship opportunities
             alongside{" "}
@@ -124,8 +162,7 @@ const Signup = () => {
       <div
         className="hidden sm:block flex-1 bg-[cover,cover] bg-center"
         style={{ backgroundImage: `url(${circles}),url(${image})` }}
-      >
-      </div>
+      ></div>
     </div>
   )
 }

@@ -7,9 +7,9 @@ import hodImage from "../assets/hod.svg"
 const Account = ({ account }) => {
 
   let img =
-    account.type === "student"
+    account.role == 0
       ? studentImage
-      : account.type === "hod"
+      : account.role == 1
       ? hodImage
       : supervisorImage
 
@@ -18,12 +18,12 @@ const Account = ({ account }) => {
       <div className="flex-1">
         <div className="flex items-center gap-8">
           <div
-            className="w-1/6 h-16 bg-center bg-no-repeat bg-contain"
+            className="w-1/6 h-16 min-w-[2.5rem] bg-center bg-no-repeat bg-contain"
             style={{ backgroundImage: `url(${img})` }}
           ></div>
           <div>
             <h1 className="font-body text-text text-lg sm:text-xl font-bold">
-              {account.lastName} {account.firstName}
+              {account.last_name} {account.first_name}
             </h1>
             <p className="text-primary">{account.email}</p>
           </div>
@@ -31,7 +31,7 @@ const Account = ({ account }) => {
         <div className="flex gap-6 items-center text-lightText font-medium mt-4">
           <p className="flex gap-2 items-center">
             <Category color="#9D9CAC" size={18} />
-            {account.type}
+            {account.role == 0 ? "student":account.role==1 ? "Head of department" : "supervisor"}
           </p>
         </div>
         <div></div>

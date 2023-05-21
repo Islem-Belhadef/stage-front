@@ -111,7 +111,7 @@ const OfferDetails = () => {
               {thisOfferx.description}
             </p>
             <div className="sm:hidden flex justify-center items-center bg-white sticky bottom-0 py-5 sm:static">
-              {(type == null || type == 0)&&(
+              {(type == null || type == 0 )&&(
                 <button
                 type="submit"
                 className="primary-btn w-44"

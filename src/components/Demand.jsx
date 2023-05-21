@@ -35,7 +35,7 @@ const Demand = ({ demand ,forUser}) => {
                         forUser == "hod" ?
                             <p className="flex items-center gap-2">
                                 <Book1 size={18} />
-                                {demand.student.semester<=6?'license 3':'master 2'}
+                                {demand.student.level=='L3'?'license 3':'master 2'}
                             </p>
 
                             :
@@ -47,6 +47,7 @@ const Demand = ({ demand ,forUser}) => {
                     <p className="flex items-center gap-2">
                         <Calendar size={18} />
                         {demand.created_at}
+                        
                     </p>
                 </div>
             </div>

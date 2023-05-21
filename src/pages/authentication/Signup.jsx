@@ -3,6 +3,8 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { useCookies } from "react-cookie"
 
 // Assets
 import logo from "/logo.svg"
@@ -11,8 +13,15 @@ import image from "../../assets/login-cover.jpg"
 import circles from "../../assets/circles.svg"
 
 const Signup = () => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
+  const [message, setMessage] = useState(false)
+  const [text, setText] = useState("")
 
+  const [cookies, setCookie, removeCookie] = useCookies()
+
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const handleSignup = (e) => {
@@ -26,7 +35,7 @@ const Signup = () => {
           setCookie("token", res.data.token)
           setCookie("type", 0)
           dispatch(login())
-          setText("successfuly logged in")
+          setText("successfuly signed up")
           setMessage(true)
           setTimeout(async () => {
             setMessage(false)

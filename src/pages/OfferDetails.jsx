@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
+import { useSelector } from "react-redux"
 // Components
 import Header from "../components/Header"
 import { Sms, Timer1, Calendar, Briefcase, Book1 } from "iconsax-react"
@@ -10,12 +11,14 @@ import SuccessModal from "../components/SuccessModal"
 import offers from "../offersData"
 
 
+
 const OfferDetails = () => {
   const [showApplyModal, setshowApplyModal] = useState(false)
   const [showSuccessModal, setshowSuccessModal] = useState(false)
   const [thisOfferx, setThisOffer] = useState(null)
   const [loading ,setLoading] = useState(true)
   const { id } = useParams()
+  const { type } = useSelector((state) => state.auth)
 
   useEffect(()=>{
     axios.get(`http://127.0.0.1:8000/api/offers/${id}`)
@@ -63,12 +66,15 @@ const OfferDetails = () => {
                   size={38}
                   className="cursor-pointer hover:scale-110 transition"
                 />
-                <button
-                  className="primary-btn w-44 hidden sm:block"
-                  onClick={() => setshowApplyModal(true)}
-                >
-                  Apply
-                </button>
+                {(type == null || type == 0)&& (
+                    <button
+                    className="primary-btn w-44 hidden sm:block"
+                    onClick={() => setshowApplyModal(true)}
+                  >
+                    Apply
+                  </button>
+                )}
+                
               </div>
             </div>
             <div className="infos flex gap-16 pb-10 pl-3">
@@ -105,13 +111,17 @@ const OfferDetails = () => {
               {thisOfferx.description}
             </p>
             <div className="sm:hidden flex justify-center items-center bg-white sticky bottom-0 py-5 sm:static">
-              <button
+              {(type == null || type == 0 )&&(
+                <button
                 type="submit"
                 className="primary-btn w-44"
                 onClick={() => setshowApplyModal(true)}
               >
                 Apply
               </button>
+
+              )}
+              
             </div>
           </div>
         </div>

@@ -35,7 +35,7 @@ const Application = ({ application, forUser }) => {
                         forUser == "hod" ?
                             <p className="flex items-center gap-2">
                                 <Book1 size={18} />
-                                {application.offer.level}
+                                {application.offer.level=="L2"?"License 2":"Master 2"}
                             </p>
 
                             :

@@ -87,7 +87,7 @@ let dashboard
           <Route path="/internship/companies" element={<Companies />} />
           <Route path="/internship/offers" element={<Offers />} />
           <Route path="/internship/demand" element={<AddDemand />} />
-          <Route path="/internship/offer" element={type == "supervisor" ? <AddOffer /> : <NotFound />} />
+          <Route path="/internship/offer" element={type == 2 ? <AddOffer /> : <NotFound />} />
           <Route path="/internship/offer/:id" element={<OfferDetails />} />
           <Route path="/addaccount" element={<AddAccount />} />
           <Route path="*" element={<NotFound />} />

@@ -7,11 +7,14 @@ import { motion } from "framer-motion"
 import Header from "../components/Header"
 import axios from "axios"
 import authAxios from "../api/axios"
+import Message from "../components/message"
+
 
 const AddAccount = () => {
 
     const navigate = useNavigate()
     const [type, setType] = useState("student")
+    const [showMessage, setShowMessage] = useState(false)
     const [departments, setDepartments] = useState([])
     const [specialities, setSpecialities] = useState([])
     const [companies, setCompanies] = useState([])
@@ -26,7 +29,7 @@ const AddAccount = () => {
         speciality_id: null,
         date_of_birth: '',
         semester: 1,
-        level: "L3",
+        level: "l3",
         academic_year: '2023/2022',
         company_id: "",
         name: "",
@@ -75,7 +78,12 @@ const AddAccount = () => {
             .then((res) => {
                 if (res.status === 201) {
                     console.log(res.data);
+                    setShowMessage(true)
                    console.log('account created')
+                   setTimeout(() => {
+                    setShowMessage(false)
+                    navigate(0)
+                   }, 1300);
                 }
             })
             .catch(err => {
@@ -234,9 +242,6 @@ const AddAccount = () => {
                                             onChange={handleInputChange}
                                             required
                                             defaultValue={''}
-
-
-
                                         >
                                             <option value={''} disabled>choose a department</option>
 
@@ -245,7 +250,6 @@ const AddAccount = () => {
 
                                             })}
                                         </select>
-
                                     </label>
 
                                     <label htmlFor="speciality" className="label mb-4 col-span-2 sm:col-auto">
@@ -276,11 +280,11 @@ const AddAccount = () => {
                                             name="level"
                                             id="level"
                                             className="input mt-2 bg-transparent"
-                                            defaultValue={"L3"}
+                                            defaultValue={"l3"}
                                             onChange={handleInputChange}
                                         >
-                                            <option value="L3">L-3</option>
-                                            <option value="M2">M-2</option>
+                                            <option value="l3">L-3</option>
+                                            <option value="m2">M-2</option>
                                         </select>
                                     </label>
 
@@ -474,6 +478,10 @@ const AddAccount = () => {
                     </form>
                 </div>
             </div>
+           
+            {showMessage && (
+                <Message type={'success'} text={'account created'}/>
+              )}
         </div>
     )
 }

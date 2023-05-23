@@ -11,13 +11,15 @@ import { useCookies } from "react-cookie"
 import logo from "/logo.svg"
 import image from "../../assets/login-cover.jpg"
 import { Eye, EyeSlash } from "iconsax-react"
+import Message from "../../components/message"
 
 const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
-  const [message, setMessage] = useState(false)
+  const [showMessage, setShowMessage] = useState(false)
   const [text, setText] = useState("")
+  const [messageType,SetMessageType] = useState()
 
   const [cookies, setCookie, removeCookie] = useCookies()
 
@@ -36,9 +38,10 @@ const Login = () => {
           setCookie("type", res.data.role)
           dispatch(login())
           setText("successfuly logged in")
-          setMessage(true)
+          SetMessageType("success")
+          setShowMessage(true)
           setTimeout(async () => {
-            setMessage(false)
+            setShowMessage(false)
             window.location.replace("/")
           }, 1500)
         }
@@ -46,9 +49,10 @@ const Login = () => {
       .catch((err) => {
         if (err.response.status === 401) {
           setText("invalid credentials please try again")
-          setMessage(true)
+          SetMessageType("error")
+          setShowMessage(true)
           setTimeout(() => {
-            setMessage(false)
+            setShowMessage(false)
           }, 3000)
           console.log("invalid credentials")
         } else {
@@ -177,10 +181,8 @@ const Login = () => {
         className="hidden sm:block flex-1 bg-cover bg-center"
         style={{ backgroundImage: `url(${image})` }}
       ></div>
-      {message && (
-        <div className="absolute top-12 w-fit left-1/2 text-lg -translate-x-1/2 -translate-y-1/2 rounded-md bg-red-500 text-white px-8 py-4">
-          {text}
-        </div>
+      {showMessage && (
+        <Message type={messageType} text={text}/>
       )}
     </div>
   )

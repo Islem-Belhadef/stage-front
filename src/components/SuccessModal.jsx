@@ -23,7 +23,8 @@ const SuccessModal = ({ setshowSuccessModal }) => {
             className="primary-btn px-16"
             onClick={() => {
               setshowSuccessModal(false)
-              navigate(-1)
+              navigate(-1) 
+              
             }}
           >
             Ok

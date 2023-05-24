@@ -22,6 +22,7 @@ const Offers = () => {
   const [offers, setOffers] = useState([])
   const [showFilters, setshowFilters] = useState(false)
   const [loading, setLoading] = useState(true)
+  
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/offers')

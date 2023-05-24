@@ -16,6 +16,7 @@ const ApplyModal = ({ offer_id, company, setshowApplyModal, setshowSuccessModal 
           setshowSuccessModal(true)
 
         }
+        
 
       })
       .catch(err => {

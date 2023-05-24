@@ -21,6 +21,7 @@ const OfferDetails = () => {
   const { type } = useSelector((state) => state.auth)
   const { isAuthenticated } = useSelector((state) => state.auth)
   const navigate = useNavigate()
+  
 
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/api/offers/${id}`)

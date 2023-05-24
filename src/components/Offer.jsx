@@ -22,6 +22,7 @@ const Offer = ({ offer }) => {
             </h1>
             <Link className="text-primary">{offer.supervisor.company.name}</Link>
           </div>
+          
         </div>
         <div className="flex gap-6 items-center text-lightText font-medium mt-4">
           <p className="flex gap-2 items-center">

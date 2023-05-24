@@ -15,6 +15,7 @@ import circles from "../../assets/circles.svg"
 const Signup = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [message, setMessage] = useState(false)
   const [text, setText] = useState("")
@@ -28,7 +29,10 @@ const Signup = () => {
     e.preventDefault()
 
     axios
-      .post("http://127.0.0.1:8000/api/auth/signup", { email, password })
+      .post("http://127.0.0.1:8000/api/auth/signup", {
+        email,
+        password,
+      })
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data)
@@ -36,10 +40,12 @@ const Signup = () => {
           setCookie("type", 0)
           dispatch(login())
           setText("successfuly signed up")
+          console.log("successfuly signed up")
           setMessage(true)
           setTimeout(async () => {
             setMessage(false)
-            window.location.replace("/")
+            // window.location.replace("/signup/confirm")
+            navigate("/signup/confirm")
           }, 1500)
         }
       })
@@ -85,7 +91,10 @@ const Signup = () => {
               University of Constantine 2 Abdelhamid Mehri
             </Link>
           </p>
-          <form className="flex flex-col items-center text-center font-body w-full mt-8 mb-6">
+          <form
+            className="flex flex-col items-center text-center font-body w-full mt-8 mb-6"
+            onSubmit={handleSignup}
+          >
             <label
               htmlFor="email"
               className="flex flex-col text-left text-grayText font-medium w-full mb-4"
@@ -96,6 +105,9 @@ const Signup = () => {
                 name="email"
                 id="email"
                 className="input mt-2"
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                }}
               />
             </label>
             <label
@@ -109,6 +121,9 @@ const Signup = () => {
                   name="password"
                   id="password"
                   className="input mt-2"
+                  onChange={(e) => {
+                    setPassword(e.target.value)
+                  }}
                 />
                 {!showPassword && (
                   <Eye
@@ -156,6 +171,9 @@ const Signup = () => {
                 name="confirm-password"
                 id="confirm-password"
                 className="input mt-2"
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value)
+                }}
               />
             </label>
             <button type="submit" className="primary-btn px-16 mt-10">

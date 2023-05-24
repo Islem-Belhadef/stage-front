@@ -1,4 +1,28 @@
-const ApplyModal = ({ company, setshowApplyModal, setshowSuccessModal }) => {
+import { useState } from "react"
+import authAxios from "../api/axios"
+
+const ApplyModal = ({ offer_id, company, setshowApplyModal, setshowSuccessModal }) => {
+
+  const [processing , setProcessing]= useState(false)
+
+  const applyToOffer = () => {
+    setProcessing(true)
+    authAxios.post('applications/new', { offer_id: offer_id })
+      .then(res => {
+        if (res.status == 201) {
+          setProcessing(false)
+          console.log('application created')
+          setshowApplyModal(false)
+          setshowSuccessModal(true)
+
+        }
+
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
   return (
     <div className=" flex justify-center items-center fixed bg-slate-800 backdrop-blur-sm bg-opacity-70 top-0 bottom-0 right-0 left-0">
       <div
@@ -6,7 +30,7 @@ const ApplyModal = ({ company, setshowApplyModal, setshowSuccessModal }) => {
         style={{ width: "clamp(350px,46%,600px)" }}
       >
         <h1 className="font-header text-text text-xl font-bold mb-4">
-          Apply to offer
+          Apply to offer {offer_id}
         </h1>
         <p className="font-body text-grayText">
           Are you sure you want to apply to this internship offer from
@@ -25,14 +49,12 @@ const ApplyModal = ({ company, setshowApplyModal, setshowSuccessModal }) => {
             Cancel
           </button>
           <button
+            disabled={processing}
             type="submit"
             className="primary-btn px-16"
-            onClick={() => {
-              setshowApplyModal(false)
-              setshowSuccessModal(true)
-            }}
+            onClick={applyToOffer}
           >
-            Confirm
+            {processing == true ? 'processing' :'Confirm'}
           </button>
         </div>
       </div>

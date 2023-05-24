@@ -2,6 +2,8 @@ import { useState, useAffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 const SuccessModal = ({ setshowSuccessModal }) => {
+
+  const navigate = useNavigate()
   return (
     <div className=" flex justify-center items-center fixed bg-slate-800 backdrop-blur-sm bg-opacity-70 top-0 bottom-0 right-0 left-0">
       <div
@@ -21,6 +23,7 @@ const SuccessModal = ({ setshowSuccessModal }) => {
             className="primary-btn px-16"
             onClick={() => {
               setshowSuccessModal(false)
+              navigate(-1)
             }}
           >
             Ok

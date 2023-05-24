@@ -11,8 +11,6 @@ import emptyBox from "../assets/empty-box.svg"
 import { Setting5 } from "iconsax-react"
 import OffersFilter from "../components/OffersFilter"
 
-//data
-import offers from "../offersData"
 import Loader from "../components/Loader"
 
 
@@ -21,7 +19,7 @@ const Offers = () => {
 
 
 
-  const [results, setResults] = useState([])
+  const [offers, setOffers] = useState([])
   const [showFilters, setshowFilters] = useState(false)
   const [loading, setLoading] = useState(true)
 
@@ -29,14 +27,14 @@ const Offers = () => {
     axios.get('http://127.0.0.1:8000/api/offers')
       .then(res => {
         console.log(res)
-        setResults(res.data.offers)
+        setOffers(res.data.offers)
         setLoading(false)
       }).catch(err => {
         console.log(err)
       })
   }, [])
 
-  console.log('these are the fetched offers n 0', results)
+  console.log('these are the fetched offers n 0', offers)
 
   return (
     <div className="bg-gray-50">
@@ -56,11 +54,11 @@ const Offers = () => {
           </div>)}
 
         {!loading && (
-          results.length > 0
+          offers.length > 0
             ?
             <div className="bg-white rounded-xl shadow-md flex-1">
               <div className="flex justify-between items-center px-6 py-4 border-b border-b-gray-200">
-                <p className=" font-header font-medium text-grayText  ">{`Showing ${results.length} offers`}</p>
+                <p className=" font-header font-medium text-grayText  ">{`Showing ${offers.length} offers`}</p>
                 <button className="lg:hidden flex items-center gap-1 font-medium text-text text-xl"
                   onClick={() => { setshowFilters(true) }}
                 >
@@ -68,8 +66,8 @@ const Offers = () => {
                   filter
                 </button>
               </div>
-              {results.map((result) => {
-                return <Offer offer={result} key={result.id} />
+              {offers.map((offer) => {
+                return <Offer offer={offer} key={offer.id} />
               })}
 
             </div>

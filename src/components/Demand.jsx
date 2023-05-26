@@ -1,5 +1,5 @@
 import { ExportSquare, Category, Calendar, Timer1,Book1 } from "iconsax-react"
-
+import relativeDate from "../dates/relativeDate"
 
 const Demand = ({ demand ,forUser}) => {
     
@@ -8,12 +8,27 @@ const Demand = ({ demand ,forUser}) => {
         <div className="py-6 px-8 border-b border-gray-200 flex justify-between">
             <div className="flex-1">
                 <div className="flex justify-between">
+                {forUser == 'supervisor'
+                    ?
+                    <p className="text-text text-lg sm:text-xl font-body font-bold">{`${demand.student.user.first_name} ${demand.student.user.last_name}`}</p>
+
+                    :
                     <h1 className=" text-text text-lg sm:text-xl font-body font-bold ">{demand.title}</h1>
+                    }
+                   
                     {forUser =='hod'
                     ?
                     <p className={`${demand.status == 1 ? "text-green-800 bg-[#A2E891]" : demand.status == 2 ? "text-red-700 bg-[#FAC5C5]" : "text-grayText bg-[#D9D9D9] "} text-sm px-3 rounded-2xl leading-relaxed font-medium mr-8`}>
                     {demand.status == 1 ? "approved" : demand.status == 2 ? "rejected" : "pending"}
                     </p>
+                    :
+                    forUser == 'supervisor'
+                    ?
+
+                    <p className={`${demand.status == 3 ? "text-green-800 bg-[#A2E891]" :  demand.status == 4 ? "text-red-700 bg-[#FAC5C5]" : "text-grayText bg-[#D9D9D9] "} text-sm px-3 rounded-2xl leading-relaxed font-medium mr-8`}>
+                    {demand.status == 3 ? "approved" :  demand.status == 4 ? "rejected" : "pending"}
+                    </p>
+
                     :
                     <p className={`${demand.status == 3 ? "text-green-800 bg-[#A2E891]" : demand.status == 2 || demand.status == 4 ? "text-red-700 bg-[#FAC5C5]" : "text-grayText bg-[#D9D9D9] "} text-sm px-3 rounded-2xl leading-relaxed font-medium mr-8`}>
                     {demand.status == 3 ? "approved" : demand.status == 2 || demand.status == 4 ? "rejected" : "pending"}
@@ -23,6 +38,10 @@ const Demand = ({ demand ,forUser}) => {
                 </div>
                 {forUser == "hod" ?
                     <p className="text-primary font-medium">{`${demand.student.user.first_name} ${demand.student.user.last_name}`}</p>
+                    :
+                    forUser == 'supervisor'
+                    ?
+                    <p className="text-primary font-medium">{demand.title}</p>
                     :
                     <p className="text-primary font-medium">{demand.company}</p>
                 }
@@ -46,7 +65,7 @@ const Demand = ({ demand ,forUser}) => {
                     }
                     <p className="flex items-center gap-2">
                         <Calendar size={18} />
-                        {demand.created_at}
+                        {relativeDate(demand.created_at)}
                         
                     </p>
                 </div>

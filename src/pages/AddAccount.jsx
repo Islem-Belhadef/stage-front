@@ -468,7 +468,7 @@ const AddAccount = () => {
                         </div>
                         <div className="flex gap-4 sm:gap-8 w-full items-center justify-center mt-8">
 
-                            <button type="reset" className="secondary-btn px-16"
+                            <button  className="secondary-btn px-16"
                                 onClick={() => navigate(-1)}
                             >
                                 Cancel

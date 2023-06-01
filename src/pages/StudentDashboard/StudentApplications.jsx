@@ -44,7 +44,11 @@ const StudentApplications = () => {
           ?
           <div className="bg-white rounded-xl shadow-md flex-1">
             {applications.map((application) => {
-              return <Application application={application} key={application.title} />
+              return (
+               <Link to={`/internship/offer/${application.offer_id}`}>
+                  <Application application={application} key={application.title} />
+              </Link>
+              )
             })}
           </div>
           :

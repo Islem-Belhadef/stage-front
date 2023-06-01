@@ -23,6 +23,11 @@ const SupervisorDashboard = () => {
             applications
           </NavLink>
           <NavLink
+            to={"mydemands"}
+            className={({ isActive }) => `${isActive? "text-primary bg-primary bg-opacity-10":"text-lightText"} font-medium font-header px-4 py-2 rounded-lg`}>
+            demands
+          </NavLink>
+          <NavLink
             to={"myinternships"}
             className={({ isActive }) =>`${isActive? "text-primary bg-primary bg-opacity-10":"text-lightText"} font-medium font-header px-4 py-2 rounded-lg`}>
             internships

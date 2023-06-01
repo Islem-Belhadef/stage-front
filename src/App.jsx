@@ -31,6 +31,7 @@ import HODDemands from "./pages/HODDashboard/HODDemands"
 import HODApplications from "./pages/HODDashboard/HODApplications"
 import AddAccount from "./pages/AddAccount"
 import StudentInternships from "./pages/StudentDashboard/StudentInternships"
+import SupervisorDemands from "./pages/SupervisorDashboard/SupervisorDemands"
 
 
 
@@ -81,6 +82,7 @@ let dashboard
               <>
                  <Route path="myoffers" element={<SupervisorOffers />} />
                  <Route path="myapplications" element={<SupervisorApplications />} />
+                 <Route path="mydemands" element={<SupervisorDemands />} />
                  <Route path="myinternships" element={<SupervisorInternships />} />
                  <Route index element={<Navigate to="/myoffers"/>} />
               </>

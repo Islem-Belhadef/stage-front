@@ -1,9 +1,8 @@
 // React & Router
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import { useCookies } from "react-cookie"
 
 // Assets
@@ -42,11 +41,13 @@ const Signup = () => {
           setText("successfuly signed up")
           console.log("successfuly signed up")
           setMessage(true)
-          setTimeout(async () => {
-            setMessage(false)
-            // window.location.replace("/signup/confirm")
-            navigate("/signup/confirm")
-          }, 1500)
+          navigate("/signup/confirm")
+          setMessage(false)
+          // setTimeout(async () => {
+          //   setMessage(false)
+          //   // window.location.replace("/signup/confirm")
+          //   navigate("/signup/confirm")
+          // }, 1500)
         }
       })
       .catch((err) => {
@@ -58,7 +59,8 @@ const Signup = () => {
           }, 3000)
           console.log("invalid credentials")
         } else {
-          console.log("login failed")
+          console.log("Signup failed")
+          console.log(err.response.data)
         }
       })
   }

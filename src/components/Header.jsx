@@ -6,18 +6,19 @@ import { logout } from "../app/authSlice"
 import { Cookies } from "react-cookie"
 import authAxios from "../api/axios"
 
-
 // Assets
-import { User, Setting, Logout as LogoutIcon, ArrowDown2, HambergerMenu } from "iconsax-react"
+import {
+  User,
+  Setting,
+  Logout as LogoutIcon,
+  ArrowDown2,
+  HambergerMenu,
+} from "iconsax-react"
 import MobileNavigation from "./MobileNavigation"
 
 // Plugins
 import { motion, AnimatePresence } from "framer-motion"
 import Avatar from "./Avatar"
-
-
-
-
 
 const Header = ({ fontColor, bgColor, btnColor }) => {
   const [showMenu, setShowMenu] = useState(false)
@@ -26,27 +27,26 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
   const { isAuthenticated } = useSelector((state) => state.auth)
   const cookies = new Cookies()
 
-
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const Logout = () => {
-    authAxios.post('/auth/logout')
+    authAxios
+      .post("/auth/logout")
       .then((res) => {
         if (res.status === 200) {
-          console.log('logged out')
-          cookies.remove('token')
-          cookies.remove('type')
+          console.log("logged out")
+          cookies.remove("token")
+          cookies.remove("type")
           dispatch(logout())
           setShowMenu(false)
           navigate("/")
         }
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err)
       })
-
   }
-
 
   return (
     <div style={{ backgroundColor: bgColor }}>
@@ -92,7 +92,7 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
         <button
           className="block sm:hidden"
           onClick={() => {
-            setShowSideMenu(!showSideMenu);
+            setShowSideMenu(!showSideMenu)
           }}
         >
           <HambergerMenu size={35} color={fontColor} />
@@ -150,15 +150,11 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
               onClick={() => setShowMenu(!showMenu)}
             >
               <Avatar lastName={"damous"} firstName={"mohamed achraf"} />
-
             </button>
-
           </>
-
         )}
       </nav>
       <AnimatePresence>
-
         {showMenu && (
           <motion.div
             key="menu"
@@ -221,9 +217,11 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
       </AnimatePresence>
       {/* this is for side navigation for small screens  */}
 
-      <MobileNavigation showSideMenu={showSideMenu} setShowSideMenu={setShowSideMenu} fontColor={fontColor} />
-
-
+      <MobileNavigation
+        showSideMenu={showSideMenu}
+        setShowSideMenu={setShowSideMenu}
+        fontColor={fontColor}
+      />
     </div>
   )
 }

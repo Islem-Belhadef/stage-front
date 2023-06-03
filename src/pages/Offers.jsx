@@ -12,13 +12,9 @@ import { Setting5 } from "iconsax-react"
 import OffersFilter from "../components/OffersFilter"
 
 import Loader from "../components/Loader"
-import authAxios from "../api/axios"
 import { Cookies } from "react-cookie"
 
 const Offers = () => {
-  const cookies = new Cookies()
-  const token = cookies.get("token")
-
   const [offers, setOffers] = useState([])
   const [showFilters, setshowFilters] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -35,33 +31,6 @@ const Offers = () => {
         console.log(err)
       })
   }, [])
-
-  const handlePDF = () => {
-    axios
-      .get("http://127.0.0.1:8000/api/internships/certificate/1", {
-        responseType: "blob",
-        headers: `Bearer ${token}`,
-      })
-      .then((response) => {
-        // Create a blob object from the response data
-        const blob = new Blob([response.data], { type: "application/pdf" })
-
-        // Create a URL for the blob object
-        const url = window.URL.createObjectURL(blob)
-
-        // Trigger the download by creating an anchor element and clicking it
-        const link = document.createElement("a")
-        link.href = url
-        link.setAttribute("download", "certificate.pdf")
-        link.click()
-
-        // Clean up by revoking the URL object
-        window.URL.revokeObjectURL(url)
-      })
-      .catch((error) => {
-        console.error("Error:", error.response.data)
-      })
-  }
 
   console.log("these are the fetched offers n 0", offers)
 
@@ -81,8 +50,6 @@ const Offers = () => {
             <Loader />
           </div>
         )}
-
-        <button onClick={handlePDF}>pdf</button>
 
         {!loading &&
           (offers.length > 0 ? (

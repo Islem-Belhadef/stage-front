@@ -16,7 +16,10 @@ import Companies from "./pages/Companies"
 import Offers from "./pages/Offers"
 import StudentDashboard from "./pages/StudentDashboard/StudentDashboard"
 import HODDashboard from "./pages/HODDashboard/HODDashboard"
-import SupervisorDashboard from "./pages/SupervisorDashboard"
+import SupervisorDashboard from "./pages/SupervisorDashboard/SupervisorDashboard"
+import SupervisorOffers from "./pages/SupervisorDashboard/SupervisorOffers"
+import SupervisorApplications from "./pages/SupervisorDashboard/SupervisorApplications"
+import SupervisorInternships from "./pages/SupervisorDashboard/SupervisorInternships"
 import SuperAdminDashboard from "./pages/SuperAdminDashboard"
 import AddDemand from "./pages/AddDemand"
 import AddOffer from "./pages/AddOffer"
@@ -28,6 +31,7 @@ import HODDemands from "./pages/HODDashboard/HODDemands"
 import HODApplications from "./pages/HODDashboard/HODApplications"
 import AddAccount from "./pages/AddAccount"
 import StudentInternships from "./pages/StudentDashboard/StudentInternships"
+import SupervisorDemands from "./pages/SupervisorDashboard/SupervisorDemands"
 
 
 
@@ -72,6 +76,15 @@ let dashboard
                  <Route path="mydemands" element={<HODDemands />} />
                  <Route path="myapplications" element={<HODApplications />} />
                  <Route index element={<Navigate to="/mydemands" />} />
+              </>
+            )}
+            {type == 2 &&(
+              <>
+                 <Route path="myoffers" element={<SupervisorOffers />} />
+                 <Route path="myapplications" element={<SupervisorApplications />} />
+                 <Route path="mydemands" element={<SupervisorDemands />} />
+                 <Route path="myinternships" element={<SupervisorInternships />} />
+                 <Route index element={<Navigate to="/myoffers"/>} />
               </>
             )}
            

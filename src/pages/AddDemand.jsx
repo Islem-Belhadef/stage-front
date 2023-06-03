@@ -42,7 +42,7 @@ const AddDemand = () => {
           setTimeout(() => {
             setShowMessage(false)
             navigate(0)
-           }, 1300);
+          }, 1300);
         }
       })
       .catch((err) => {
@@ -150,8 +150,10 @@ const AddDemand = () => {
               </label>
             </div>
             <div className="flex gap-8 w-full items-center justify-center mt-8">
-              <button type="reset" className="secondary-btn px-16 cursor-pointer">
-                Reset
+              <button className="secondary-btn px-16 cursor-pointer"
+                onClick={() => navigate(-1)}
+              >
+                Cancel
               </button>
               <input
                 className="primary-btn px-16 cursor-pointer"

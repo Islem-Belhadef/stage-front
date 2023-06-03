@@ -11,46 +11,46 @@ const AddOffer = () => {
 
   const navigate = useNavigate()
   const [showMessage, setShowMessage] = useState(false)
-  const [offerData,setOfferData] = useState({
-    title:'',
-    level:'l3',
-    available_spots:1,
-    start_date:'',
-    end_date:'',
-    description:''
+  const [offerData, setOfferData] = useState({
+    title: '',
+    level: 'l3',
+    available_spots: 1,
+    start_date: '',
+    end_date: '',
+    description: ''
   })
 
-  const handleOnChange = (e)=>{
+  const handleOnChange = (e) => {
     const value = e.target.value
-        const name = e.target.name
-        setOfferData((prevState) => ({
-            ...prevState,
-            [name]: value
-        }))
+    const name = e.target.name
+    setOfferData((prevState) => ({
+      ...prevState,
+      [name]: value
+    }))
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-  
+
     authAxios.post("offers/new", offerData)
       .then((res) => {
         if (res.status === 201) {
-         console.log(res)
-         console.log('offer created')
-         setShowMessage(true)
-         setTimeout(() => {
-           setShowMessage(false)
-           navigate(0)
+          console.log(res)
+          console.log('offer created')
+          setShowMessage(true)
+          setTimeout(() => {
+            setShowMessage(false)
+            navigate(0)
           }, 1300);
         }
       })
       .catch((err) => {
-       console.log(err)
-        
+        console.log(err)
+
       })
   }
 
-console.log(offerData)
+  console.log(offerData)
   return (
     <div className="bg-gray-50">
       <Header fontColor="#272937" bgColor="#FFFFFF" btnColor="#383EBE" />
@@ -63,7 +63,7 @@ console.log(offerData)
             Please fill in these information to add a new internship offer
           </p>
           <form className="mt-8"
-          onSubmit={handleSubmit} 
+            onSubmit={handleSubmit}
           >
             <div className="grid grid-cols-2 gap-x-8 gap-y-2 font-body">
               <label htmlFor="title" className="label mb-4 col-span-2">
@@ -90,7 +90,7 @@ console.log(offerData)
                   required
                   onChange={handleOnChange}
                 >
-                 
+
                   <option value="l3">L-3</option>
                   <option value="m2">M-2</option>
                 </select>
@@ -149,14 +149,16 @@ console.log(offerData)
               </label>
             </div>
             <div className="flex gap-8 w-full items-center justify-center mt-8">
-              <button type="reset" className="secondary-btn px-16">
-                Reset
+              <button className="secondary-btn px-16"
+                onClick={() => navigate(-1)}
+              >
+                Cancel
               </button>
               <input
-              className="primary-btn px-16 cursor-pointer"
-              type="submit"
-              value="Confirm"
-            />
+                className="primary-btn px-16 cursor-pointer"
+                type="submit"
+                value="Confirm"
+              />
             </div>
           </form>
         </div>

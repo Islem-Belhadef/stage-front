@@ -98,12 +98,12 @@ const Contact = () => {
                 maxLength={100}
               />
             </label>
-            <label htmlFor="email" className="label">
+            <label htmlFor="content" className="label">
               Content
               <textarea
                 type="text"
-                name="email"
-                id="email"
+                name="content"
+                id="content"
                 className="input mt-2"
                 maxLength={2000}
               />

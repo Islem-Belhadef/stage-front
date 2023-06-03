@@ -8,8 +8,6 @@ import Header from "../components/Header"
 import { Sms, Timer1, Calendar, Briefcase, Book1 } from "iconsax-react"
 import ApplyModal from "../components/applyModal"
 import SuccessModal from "../components/SuccessModal"
-import offers from "../offersData"
-
 
 
 const OfferDetails = () => {
@@ -21,7 +19,7 @@ const OfferDetails = () => {
   const { type } = useSelector((state) => state.auth)
   const { isAuthenticated } = useSelector((state) => state.auth)
   const navigate = useNavigate()
-  
+
 
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/api/offers/${id}`)

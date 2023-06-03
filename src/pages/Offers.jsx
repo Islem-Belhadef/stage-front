@@ -5,14 +5,13 @@ import axios from "axios"
 // Components
 import Header from "../components/Header"
 import Offer from "../components/Offer"
+import OffersFilter from "../components/OffersFilter"
+import Loader from "../components/Loader"
 
 // Assets
 import emptyBox from "../assets/empty-box.svg"
 import { Setting5 } from "iconsax-react"
-import OffersFilter from "../components/OffersFilter"
 
-import Loader from "../components/Loader"
-import { Cookies } from "react-cookie"
 
 const Offers = () => {
   const [offers, setOffers] = useState([])

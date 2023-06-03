@@ -1,10 +1,9 @@
+import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { useRef } from "react"
+import authAxios from "../../api/axios"
 // Assets
 import { Sms, ArrowLeft } from "iconsax-react"
-import image from "../../assets/informations-cover.jpg"
-import axios from "axios"
-import authAxios from "../../api/axios"
+
 
 const handleKeyUp = (e) => {
   var current = e.target
@@ -19,19 +18,27 @@ const handleKeyUp = (e) => {
   }
 }
 
+
 const ConfirmEmail = () => {
+
+  const [code1, setCode1] = useState(``)
+  const [code2, setCode2] = useState('')
+  const [code3, setCode3] = useState('')
+  const [code4, setCode4] = useState('')
+  const [code5, setCode5] = useState('')
+  const [code6, setCode6] = useState('')
+
   const navigate = useNavigate()
-  const inputs = [1, 2, 3, 4, 5, 6]
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
     authAxios
-      .post("http://127.0.0.1:8000/api/auth/email", { code })
+      .post("http://127.0.0.1:8000/api/auth/email", {code: `${code1}${code2}${code3}${code4}${code5}${code6}`})
       .then((res) => {
         if (res.status === 200) {
-          // window.location.replace("/signup/info")
-          navigate("/signup/info")
+          console.log(res)
+          window.location.replace("/signup/info")
         } else {
           console.log("Wrong verification code")
         }
@@ -40,6 +47,9 @@ const ConfirmEmail = () => {
         console.log(err)
       })
   }
+
+  console.log(`${code1}${code2}${code3}${code4}${code5}${code6}`)
+
 
   return (
     <div className="h-[100svh] sm:h-screen w-screen bg-cover bg-center flex sm:items-center justify-center sm:bg-[url('/src/assets/informations-cover.jpg')]">
@@ -62,32 +72,107 @@ const ConfirmEmail = () => {
           Please enter the code sent to your school email address down below to
           continue
         </p>
-        <form className="w-full flex flex-col items-center mt-6">
+        <form className="w-full flex flex-col items-center mt-6"
+          onSubmit={handleSubmit}
+        >
           <label htmlFor="code-1" className="label mb-2">
             Code
           </label>
           <div className="flex gap-1 sm:gap-4">
-            {inputs.map((index) => {
-              return (
                 <input
                   type="text"
-                  name={`code-${index}`}
-                  id={`code-${index}`}
+                  name={`code-1`}
+                  id={`code-1`}
                   pattern="[0-9]*"
                   min="0"
                   max="9"
-                  maxlength="1"
+                  maxLength="1"
                   inputtype="numeric"
                   required
                   className="!px-1  max-w-[3rem] input sm: sm:px-4 sm:!w-12 !h-12 text-[1.3rem] text-center"
                   onKeyUp={handleKeyUp}
+                  onChange={(e)=>{setCode1(e.target.value)}}
                 />
-              )
-            })}
+
+                <input
+                  type="text"
+                  name={`code-2`}
+                  id={`code-2`}
+                  pattern="[0-9]*"
+                  min="0"
+                  max="9"
+                  maxLength="1"
+                  inputtype="numeric"
+                  required
+                  className="!px-1  max-w-[3rem] input sm: sm:px-4 sm:!w-12 !h-12 text-[1.3rem] text-center"
+                  onKeyUp={handleKeyUp}
+                  onChange={(e)=>setCode2(e.target.value)}
+                />
+                <input
+                  type="text"
+                  name={`code-3`}
+                  id={`code-3`}
+                  pattern="[0-9]*"
+                  min="0"
+                  max="9"
+                  maxLength="1"
+                  inputtype="numeric"
+                  required
+                  className="!px-1  max-w-[3rem] input sm: sm:px-4 sm:!w-12 !h-12 text-[1.3rem] text-center"
+                  onKeyUp={handleKeyUp}
+                  onChange={(e)=>setCode3(e.target.value)}
+
+                />
+                <input
+                  type="text"
+                  name={`code-4`}
+                  id={`code-4`}
+                  pattern="[0-9]*"
+                  min="0"
+                  max="9"
+                  maxLength="1"
+                  inputtype="numeric"
+                  required
+                  className="!px-1  max-w-[3rem] input sm: sm:px-4 sm:!w-12 !h-12 text-[1.3rem] text-center"
+                  onKeyUp={handleKeyUp}
+                  onChange={(e)=>setCode4(e.target.value)}
+
+                />
+                <input
+                  type="text"
+                  name={`code-5`}
+                  id={`code-5`}
+                  pattern="[0-9]*"
+                  min="0"
+                  max="9"
+                  maxLength="1"
+                  inputtype="numeric"
+                  required
+                  className="!px-1  max-w-[3rem] input sm: sm:px-4 sm:!w-12 !h-12 text-[1.3rem] text-center"
+                  onKeyUp={handleKeyUp}
+                  onChange={(e)=>setCode5(e.target.value)}
+
+                />
+                <input
+                  type="text"
+                  name={`code-6`}
+                  id={`code-6`}
+                  pattern="[0-9]*"
+                  min="0"
+                  max="9"
+                  maxLength="1"
+                  inputtype="numeric"
+                  required
+                  className="!px-1  max-w-[3rem] input sm: sm:px-4 sm:!w-12 !h-12 text-[1.3rem] text-center"
+                  onKeyUp={handleKeyUp}
+                  onChange={(e)=>setCode6(e.target.value)}
+
+                />
+
           </div>
-          <button type="submit" className="primary-btn my-6 w-full">
-            Confirm
-          </button>
+          <input className="primary-btn my-6 w-full cursor-pointer" type="submit" value="Confirm" 
+          disabled={(code1==''||code2==''||code3==''||code4==''||code5==''||code6=='')}
+          />
         </form>
         <p className="font-body text-text text-sm">Didn't recieve the code?</p>
         <button className="text-primary font-body text-sm mb-8 sm:mb-4">

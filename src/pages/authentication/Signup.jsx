@@ -1,69 +1,77 @@
 // React & Router
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import axios from "axios"
-import { useDispatch } from "react-redux"
 import { useCookies } from "react-cookie"
 
 // Assets
 import logo from "/logo.svg"
 import { Eye, EyeSlash } from "iconsax-react"
 import image from "../../assets/login-cover.jpg"
-import circles from "../../assets/circles.svg"
+import Message from "../../components/message"
+
+
 
 const Signup = () => {
+
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
-  const [message, setMessage] = useState(false)
+  const [error , setError] = useState(null)
+  const [passwordMatch , setPasswordMatch] = useState()
+  const [showMessage, setShowMessage] = useState(false)
+  const [messageType, setMessageType] = useState()
   const [text, setText] = useState("")
 
   const [cookies, setCookie, removeCookie] = useCookies()
 
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+
+  const isValidEmail = (email) => {
+    const pattern = /^[a-zA-Z0-9_.+-]+@univ-constantine2.dz$/
+    return pattern.test(email)
+  }
 
   const handleSignup = (e) => {
+
     e.preventDefault()
 
-    axios
-      .post("http://127.0.0.1:8000/api/auth/signup", {
-        email,
-        password,
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          console.log(res.data)
-          setCookie("token", res.data.token)
-          setCookie("type", 0)
-          dispatch(login())
-          setText("successfuly signed up")
-          console.log("successfuly signed up")
-          setMessage(true)
-          navigate("/signup/confirm")
-          setMessage(false)
-          // setTimeout(async () => {
-          //   setMessage(false)
-          //   // window.location.replace("/signup/confirm")
-          //   navigate("/signup/confirm")
-          // }, 1500)
-        }
-      })
-      .catch((err) => {
-        if (err.response.status === 401) {
-          setText("invalid credentials please try again")
-          setMessage(true)
-          setTimeout(() => {
-            setMessage(false)
-          }, 3000)
-          console.log("invalid credentials")
-        } else {
-          console.log("Signup failed")
-          console.log(err.response.data)
-        }
-      })
+    if(!isValidEmail(email)){
+      setError('* invalid email please use your university email')
+
+    }else if(confirmPassword != password){
+      setPasswordMatch(false)
+
+    }else{
+      
+      axios
+        .post("http://127.0.0.1:8000/api/auth/signup", {
+          email,
+          password,
+        })
+        .then((res) => {
+          if (res.status === 201) {
+            console.log(res.data)
+             setCookie("token", res.data.token, {path:"/"})
+            setText("successfuly signed up")
+            console.log("successfuly signed up")
+            setMessageType('success')
+            setShowMessage(true)
+            
+            setTimeout(() => {
+              setShowMessage(false)
+              window.location.replace("/signup/confirm")
+              
+            }, 1500)
+          }
+        })
+        .catch((err) => {
+             console.log(err)
+        })
+    }
+   
   }
+
 
   return (
     <div className="h-screen w-screen flex">
@@ -96,6 +104,7 @@ const Signup = () => {
           <form
             className="flex flex-col items-center text-center font-body w-full mt-8 mb-6"
             onSubmit={handleSignup}
+        
           >
             <label
               htmlFor="email"
@@ -106,12 +115,15 @@ const Signup = () => {
                 type="email"
                 name="email"
                 id="email"
-                className="input mt-2"
-                onChange={(e) => {
-                  setEmail(e.target.value)
+                className={`${error && 'ring-red-500 ring-1 focus:ring-1 focus:ring-red-500 focus:border-lightGray'} input mt-2`}
+                required
+                onChange={(e) => {setEmail(e.target.value);setError(null)
+             
                 }}
               />
+            {error && <p className="text-xs sm:text-sm text-red-500 mt-2">{error}</p> }
             </label>
+
             <label
               htmlFor="password"
               className="flex flex-col text-left text-grayText font-medium w-full"
@@ -123,6 +135,7 @@ const Signup = () => {
                   name="password"
                   id="password"
                   className="input mt-2"
+                  required
                   onChange={(e) => {
                     setPassword(e.target.value)
                   }}
@@ -139,8 +152,7 @@ const Signup = () => {
                     }}
                     onClick={() => {
                       setShowPassword(true)
-                      passwordInput.current.type = "text"
-                      confirmPasswordInput.current.type = "text"
+                      
                     }}
                   />
                 )}
@@ -156,8 +168,7 @@ const Signup = () => {
                     }}
                     onClick={() => {
                       setShowPassword(false)
-                      passwordInput.current.type = "password"
-                      confirmPasswordInput.current.type = "password"
+                  
                     }}
                   />
                 )}
@@ -172,11 +183,19 @@ const Signup = () => {
                 type={showPassword ? "text" : "password"}
                 name="confirm-password"
                 id="confirm-password"
-                className="input mt-2"
+                className={`${passwordMatch==false && 'ring-red-500 ring-1 focus:ring-1 focus:ring-red-500 focus:border-lightGray'} input mt-2`}
+                required
                 onChange={(e) => {
                   setConfirmPassword(e.target.value)
+                  if(e.target.value === password){
+                    setPasswordMatch(true)
+                  }
+                  else{
+                    setPasswordMatch(false)
+                  }
                 }}
               />
+              {passwordMatch==false && <p className="text-xs sm:text-sm text-red-500 mt-2">* password do not match</p>}
             </label>
             <button type="submit" className="primary-btn px-16 mt-10">
               Create account
@@ -190,8 +209,11 @@ const Signup = () => {
 
       <div
         className="hidden sm:block flex-1 bg-[cover,cover] bg-center"
-        style={{ backgroundImage: `url(${circles}),url(${image})` }}
+        style={{ backgroundImage: `url(${image})` }}
       ></div>
+      {showMessage==true && (
+        <Message type={messageType} text={text}/>
+      )}
     </div>
   )
 }

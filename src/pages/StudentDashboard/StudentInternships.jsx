@@ -2,10 +2,13 @@
 import axios from "axios"
 import { Calendar, Import } from "iconsax-react"
 import { Cookies } from "react-cookie"
+import authAxios from "../../api/axios"
 
 const StudentInternships = () => {
   const cookies = new Cookies()
   const token = cookies.get("token")
+
+  console.log(token)
 
   const applications = [
     {
@@ -38,11 +41,10 @@ const StudentInternships = () => {
   ]
 
   const handleDownloadCertificate = () => {
-    axios
-      .get("http://127.0.0.1:8000/api/internships/certificate/1", {
-        responseType: "blob",
-        headers: `Bearer ${token}`,
-      })
+    authAxios
+      .get("http://127.0.0.1:8000/api/internships/certificate/1",
+    { responseType: "blob"}
+       )
       .then((response) => {
         const blob = new Blob([response.data], { type: "application/pdf" })
         const url = window.URL.createObjectURL(blob)
@@ -58,11 +60,10 @@ const StudentInternships = () => {
   }
 
   const handleDownloadEvaluation = () => {
-    axios
+    authAxios
       .get("http://127.0.0.1:8000/api/internships/evaluation/1", {
-        responseType: "blob",
-        headers: `Bearer ${token}`,
-      })
+        responseType: "blob"}
+        )
       .then((response) => {
         const blob = new Blob([response.data], { type: "application/pdf" })
         const url = window.URL.createObjectURL(blob)

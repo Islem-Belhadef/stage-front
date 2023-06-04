@@ -19,7 +19,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
   const [text, setText] = useState("")
-  const [messageType,SetMessageType] = useState()
+  const [messageType, SetMessageType] = useState()
 
   const [cookies, setCookie, removeCookie] = useCookies()
 
@@ -36,6 +36,8 @@ const Login = () => {
           console.log(res.data)
           setCookie("token", res.data.token)
           setCookie("type", res.data.role)
+          setCookie("firstName", res.data.user.first_name)
+          setCookie("lastName", res.data.user.last_name)
           dispatch(login())
           setText("successfuly logged in")
           SetMessageType("success")
@@ -181,9 +183,7 @@ const Login = () => {
         className="hidden sm:block flex-1 bg-cover bg-center"
         style={{ backgroundImage: `url(${image})` }}
       ></div>
-      {showMessage && (
-        <Message type={messageType} text={text}/>
-      )}
+      {showMessage && <Message type={messageType} text={text} />}
     </div>
   )
 }

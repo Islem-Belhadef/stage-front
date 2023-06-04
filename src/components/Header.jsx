@@ -122,7 +122,7 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
               style={{ color: fontColor }}
               onClick={() => setShowMenu(!showMenu)}
             >
-              FirstName
+              {cookies.get("firstName")}
               <AnimatePresence>
                 {!showMenu && (
                   <motion.div
@@ -149,7 +149,10 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
               className="block sm:hidden"
               onClick={() => setShowMenu(!showMenu)}
             >
-              <Avatar lastName={"damous"} firstName={"mohamed achraf"} />
+              <Avatar
+                lastName={cookies.get("lastName")}
+                firstName={cookies.get("firstName")}
+              />
             </button>
           </>
         )}
@@ -174,7 +177,7 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
               className="block sm:hidden px-8 py-4 border-b border-b-gray-200"
             >
               <p className="text-lightText text-sm ">signed in as </p>
-              <p>Mohamed Achraf Damous</p>
+              <p>{cookies.get("firstName")}</p>
             </motion.div>
             <motion.a
               initial={{ opacity: 0 }}

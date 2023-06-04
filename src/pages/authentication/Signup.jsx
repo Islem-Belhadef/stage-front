@@ -10,22 +10,18 @@ import { Eye, EyeSlash } from "iconsax-react"
 import image from "../../assets/login-cover.jpg"
 import Message from "../../components/message"
 
-
-
 const Signup = () => {
-
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
-  const [error , setError] = useState(null)
-  const [passwordMatch , setPasswordMatch] = useState()
+  const [error, setError] = useState(null)
+  const [passwordMatch, setPasswordMatch] = useState()
   const [showMessage, setShowMessage] = useState(false)
   const [messageType, setMessageType] = useState()
   const [text, setText] = useState("")
 
   const [cookies, setCookie, removeCookie] = useCookies()
-
 
   const isValidEmail = (email) => {
     const pattern = /^[a-zA-Z0-9_.+-]+@univ-constantine2.dz$/
@@ -33,17 +29,13 @@ const Signup = () => {
   }
 
   const handleSignup = (e) => {
-
     e.preventDefault()
 
-    if(!isValidEmail(email)){
-      setError('* invalid email please use your university email')
-
-    }else if(confirmPassword != password){
+    if (!isValidEmail(email)) {
+      setError("* invalid email please use your university email")
+    } else if (confirmPassword != password) {
       setPasswordMatch(false)
-
-    }else{
-      
+    } else {
       axios
         .post("http://127.0.0.1:8000/api/auth/signup", {
           email,
@@ -52,26 +44,25 @@ const Signup = () => {
         .then((res) => {
           if (res.status === 201) {
             console.log(res.data)
-             setCookie("token", res.data.token, {path:"/"})
+            setCookie("token", res.data.token, { path: "/" })
+            setCookie("firstName", res.data.user.first_name)
+            setCookie("lastName", res.data.user.last_name)
             setText("successfuly signed up")
             console.log("successfuly signed up")
-            setMessageType('success')
+            setMessageType("success")
             setShowMessage(true)
-            
+
             setTimeout(() => {
               setShowMessage(false)
               window.location.replace("/signup/confirm")
-              
             }, 1500)
           }
         })
         .catch((err) => {
-             console.log(err)
+          console.log(err)
         })
     }
-   
   }
-
 
   return (
     <div className="h-screen w-screen flex">
@@ -104,7 +95,6 @@ const Signup = () => {
           <form
             className="flex flex-col items-center text-center font-body w-full mt-8 mb-6"
             onSubmit={handleSignup}
-        
           >
             <label
               htmlFor="email"
@@ -115,13 +105,19 @@ const Signup = () => {
                 type="email"
                 name="email"
                 id="email"
-                className={`${error && 'ring-red-500 ring-1 focus:ring-1 focus:ring-red-500 focus:border-lightGray'} input mt-2`}
+                className={`${
+                  error &&
+                  "ring-red-500 ring-1 focus:ring-1 focus:ring-red-500 focus:border-lightGray"
+                } input mt-2`}
                 required
-                onChange={(e) => {setEmail(e.target.value);setError(null)
-             
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                  setError(null)
                 }}
               />
-            {error && <p className="text-xs sm:text-sm text-red-500 mt-2">{error}</p> }
+              {error && (
+                <p className="text-xs sm:text-sm text-red-500 mt-2">{error}</p>
+              )}
             </label>
 
             <label
@@ -152,7 +148,6 @@ const Signup = () => {
                     }}
                     onClick={() => {
                       setShowPassword(true)
-                      
                     }}
                   />
                 )}
@@ -168,7 +163,6 @@ const Signup = () => {
                     }}
                     onClick={() => {
                       setShowPassword(false)
-                  
                     }}
                   />
                 )}
@@ -183,19 +177,25 @@ const Signup = () => {
                 type={showPassword ? "text" : "password"}
                 name="confirm-password"
                 id="confirm-password"
-                className={`${passwordMatch==false && 'ring-red-500 ring-1 focus:ring-1 focus:ring-red-500 focus:border-lightGray'} input mt-2`}
+                className={`${
+                  passwordMatch == false &&
+                  "ring-red-500 ring-1 focus:ring-1 focus:ring-red-500 focus:border-lightGray"
+                } input mt-2`}
                 required
                 onChange={(e) => {
                   setConfirmPassword(e.target.value)
-                  if(e.target.value === password){
+                  if (e.target.value === password) {
                     setPasswordMatch(true)
-                  }
-                  else{
+                  } else {
                     setPasswordMatch(false)
                   }
                 }}
               />
-              {passwordMatch==false && <p className="text-xs sm:text-sm text-red-500 mt-2">* password do not match</p>}
+              {passwordMatch == false && (
+                <p className="text-xs sm:text-sm text-red-500 mt-2">
+                  * password do not match
+                </p>
+              )}
             </label>
             <button type="submit" className="primary-btn px-16 mt-10">
               Create account
@@ -211,9 +211,7 @@ const Signup = () => {
         className="hidden sm:block flex-1 bg-[cover,cover] bg-center"
         style={{ backgroundImage: `url(${image})` }}
       ></div>
-      {showMessage==true && (
-        <Message type={messageType} text={text}/>
-      )}
+      {showMessage == true && <Message type={messageType} text={text} />}
     </div>
   )
 }

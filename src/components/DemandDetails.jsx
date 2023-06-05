@@ -161,7 +161,7 @@ const DemandDetails = ({ forUser, setShowDetails, demand }) => {
                             <div className="text-grayText text-sm font-medium font-body w-fit cursor-pointer"
                                 onClick={() => setShowMotive(!showMotive)}
                             >
-                                {showMotive == true ? 'rejection motive' : 'add a rejection motive'}
+                                {showMotive == true ? 'no rejection motive' : 'add a rejection motive'}
 
                             </div>
                             {showMotive == true && (

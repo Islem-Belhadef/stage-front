@@ -83,7 +83,8 @@ const Demand = ({ demand, forUser }) => {
                     className="cursor-pointer hover:scale-110 transition"
                 />
             </div>
-            {showDetails == true &&
+            {/* show demand details only for hod or supervisor not student  */}
+            {(showDetails == true && (forUser=='hod'|| forUser=='supervisor')) &&
 
                 <DemandDetails forUser={forUser} demand={demand} setShowDetails={setShowDetails} />
             }

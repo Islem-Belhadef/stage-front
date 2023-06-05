@@ -6,7 +6,8 @@
 @tailwind utilities;
 
 body{
-  @apply bg-gray-50
+  /* @apply bg-gray-50 */
+  @apply bg-bg
 }
 
 .input {
@@ -23,4 +24,11 @@ body{
 
 .secondary-btn {
   @apply py-3 px-10 rounded-lg border border-primary hover:border-primaryHover active:border-primaryFocus disabled:border-primaryDisabled disabled:bg-transparent text-primary font-body font-medium text-center transition;
+}
+.tabs{
+  -ms-overflow-style:none;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar {
+  display: none;
 }

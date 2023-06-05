@@ -49,7 +49,7 @@ const StudentDemands = () => {
 
 
           {demands.map((demand) => {
-            return <Demand demand={demand} key={demand.id} />
+            return <Demand forUser={'student'} demand={demand} key={demand.id} />
           })}
         </div>
 

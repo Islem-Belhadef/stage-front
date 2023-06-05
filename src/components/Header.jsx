@@ -38,6 +38,8 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
           console.log("logged out")
           cookies.remove("token")
           cookies.remove("type")
+          cookies.remove("firstName")
+          cookies.remove("lastName")
           dispatch(logout())
           setShowMenu(false)
           navigate("/")
@@ -177,7 +179,7 @@ const Header = ({ fontColor, bgColor, btnColor }) => {
               className="block sm:hidden px-8 py-4 border-b border-b-gray-200"
             >
               <p className="text-lightText text-sm ">signed in as </p>
-              <p>{cookies.get("firstName")}</p>
+              <p>{cookies.get("firstName")} {cookies.get("lastName")}</p>
             </motion.div>
             <motion.a
               initial={{ opacity: 0 }}

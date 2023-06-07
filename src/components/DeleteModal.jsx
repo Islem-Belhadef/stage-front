@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 
 
-const DeleteModal = ({ For, setShowDelete, offerTitle, offerId, accountId, accountName }) => {
+const DeleteModal = ({ For, setShowDelete, offerTitle, offerId, accountId, accountName ,demandId , demandTitle}) => {
 
     const navigate = useNavigate()
     const [deleteSuccess, setDeleteSuccess] = useState(false)
 
     const handleDelete = () => {
-        const url = For == 'offer' ? `offers/destroy/${offerId}` : `accounts/destroy/${accountId}`
+        const url = For == 'offer' ? `offers/destroy/${offerId}` :For=='account'? `accounts/destroy/${accountId}`:`demands/destroy/${demandId}`
         authAxios.delete(url)
             .then(res => {
                 if(res.status == 200){
@@ -41,10 +41,11 @@ const DeleteModal = ({ For, setShowDelete, offerTitle, offerId, accountId, accou
                             </div>
                             <div className="flex-1">
                                 <h1 className="font-header text-text text-xl font-bold mb-2">
-                                    Delete {For == 'offer' ? 'offer' : 'account'}
+                                    Delete {For == 'offer' ? 'offer' : For=='account'? 'account'  :'demand'}
                                 </h1>
                                 <p className="font-body text-grayText">
-                                    Are you sure you want to delete {For == 'offer' ?  <span className="font-semibold">{offerTitle} internship offer</span>  : <span className="font-semibold">{accountName} account</span> }
+                                    Are you sure you want to delete {For == 'offer' ?  <span className="font-semibold">{offerTitle} internship offer</span> 
+                                     :For=='account'? <span className="font-semibold">{accountName} account</span>: <span className="font-semibold">{demandTitle} demand</span>}
                                 </p>
                             </div>
 
@@ -64,7 +65,7 @@ const DeleteModal = ({ For, setShowDelete, offerTitle, offerId, accountId, accou
                     <div className="flex flex-col items-center gap-4">
                         <TickCircle size={30} color="#b91c1c" />
                         <h1 className="font-header text-center text-text text-lg font-bold mb-2">
-                        {For == 'offer' ? 'offer' : 'account'} successfully deleted
+                        {For == 'offer' ? 'offer' : For == 'account'? 'account':'demand'} successfully deleted
                         </h1>
                     </div>
 

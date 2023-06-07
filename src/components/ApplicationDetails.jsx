@@ -147,7 +147,7 @@ const ApplicationDetails = ({ forUser, setShowDetails, application }) => {
                             {showMotive == true && (
                                 <textarea
                                     type="text"
-                                    placeholder="what is wrong with the demand?"
+                                    placeholder="what is wrong with the application?"
                                     name="rejection_motive"
                                     id="rejection_motive"
                                     className="input mt-2"

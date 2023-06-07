@@ -1,16 +1,20 @@
-import { ExportSquare, Category, Calendar, Timer1, Book1 } from "iconsax-react"
+import { ExportSquare, Category, Calendar, Timer1, Book1, Edit, Trash } from "iconsax-react"
 import relativeDate from "../dates/relativeDate"
 import DemandDetails from "./DemandDetails"
+import EditDemand from "./EditDemand"
+import DeleteModal from "./DeleteModal"
 import { useState } from "react"
 
 const Demand = ({ demand, forUser }) => {
 
     const [showDetails, setShowDetails] = useState(false)
+    const [showEditDemand, setShowEditDemand] = useState(false)
+    const [showDelete, setShowDelete] = useState(false)
 
     return (
-        <div className="py-6 px-8 border-b border-gray-200 flex justify-between"
+        <div className="py-6 pl-4 sm:pl-8 pr-4 border-b border-gray-200 flex justify-between"
         >
-            <div className="flex-1  cursor-pointer"
+            <div className={`${forUser != 'student' && " cursor-pointer"} flex-1`}
                 onClick={() => setShowDetails(true)}
 
             >
@@ -77,16 +81,38 @@ const Demand = ({ demand, forUser }) => {
                     </p>
                 </div>
             </div>
-            <div className="flex items-center justify-center">
-                <ExportSquare
-                    color="#383EBE"
-                    className="cursor-pointer hover:scale-110 transition"
-                />
-            </div>
+            {/* show delete and edit buttons only for student  */}
+            {forUser == 'student' && (
+
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-2 items-center justify-center">
+                    {/* disable buttons when demand is already accepted by hod  */}
+                    <Edit
+                        color={demand.status == 0 ? "#7CDF64" : "#9D9CAC"}
+                        className={`${demand.status == 0 ? "cursor-pointer" : "pointer-events-none"} hover:scale-110 transition`}
+                        onClick={() => setShowEditDemand(true)}
+
+                    />
+                    <Trash
+                        color={demand.status == 0 ? "#F64A4A" : "#9D9CAC"}
+                        className={`${demand.status == 0 ? "cursor-pointer" : "pointer-events-none"} hover:scale-110 transition`}
+                        onClick={() => setShowDelete(true)}
+                    />
+                </div>
+            )}
+
             {/* show demand details only for hod or supervisor not student  */}
-            {(showDetails == true && (forUser=='hod'|| forUser=='supervisor')) &&
+            {(showDetails == true && (forUser == 'hod' || forUser == 'supervisor')) &&
 
                 <DemandDetails forUser={forUser} demand={demand} setShowDetails={setShowDetails} />
+            }
+            {/* show edit demand form only student  */}
+            {(showEditDemand == true && (forUser == 'student')) &&
+
+                <EditDemand demand={demand} setShowEditDemand={setShowEditDemand} />
+            }
+            {/* delete modal */}
+            {(showDelete && (forUser == 'student')) &&
+                <DeleteModal For='demand' demandTitle={demand.title} demandId={demand.id} setShowDelete={setShowDelete} />
             }
         </div>
     )

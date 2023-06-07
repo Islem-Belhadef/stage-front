@@ -2,10 +2,12 @@ import relativeDate from "../dates/relativeDate"
 import { Book1, Calendar, Edit, Timer1, Trash } from "iconsax-react"
 import DeleteModal from "./DeleteModal"
 import { useState } from "react"
+import EditOffer from "./EditOffer"
 
 const SupervisorOffer = ({ offer }) => {
 
     const [showDelete, setShowDelete] = useState(false)
+    const [showEditOffer, setShowEditOffer] = useState(false)
 
 
     return (
@@ -42,7 +44,7 @@ const SupervisorOffer = ({ offer }) => {
                     className="cursor-pointer hover:scale-110 transition"
                     color="#7CDF64"
                     size={24}
-                    onClick={() => console.log('edit')}
+                    onClick={() => setShowEditOffer(true)}
                 />
                 <Trash 
                     className="cursor-pointer hover:scale-110 transition" 
@@ -51,6 +53,10 @@ const SupervisorOffer = ({ offer }) => {
                     onClick={() => setShowDelete(true)}
                 />
             </div>
+            {/* delete modal */}
+            {showEditOffer && 
+            <EditOffer offer={offer} setShowEditOffer={setShowEditOffer} />
+            }
             {/* delete modal */}
             {showDelete && 
             <DeleteModal For='offer' offerTitle={offer.title} offerId={offer.id} setShowDelete={setShowDelete}/>

@@ -62,11 +62,11 @@ const OfferDetails = () => {
                   {thisOffer.title}
                 </h1>
                 <div className="buttons flex items-center gap-8">
-                  <Sms
+                  {/* <Sms
                     color="#7CDF64"
                     size={38}
                     className="cursor-pointer hover:scale-110 transition"
-                  />
+                  /> */}
                   {(type == null || type == 0) && (
                     <button
                       className="primary-btn w-44 hidden sm:block"

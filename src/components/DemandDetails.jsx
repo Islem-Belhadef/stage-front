@@ -61,7 +61,7 @@ const DemandDetails = ({ forUser, setShowDetails, demand }) => {
         <div className="flex justify-center items-center fixed bg-slate-800 backdrop-blur-sm bg-opacity-70 top-0 bottom-0 right-0 left-0">
             <div className=" bg-white h-fit rounded-xl sm:w-[75%] md:w-[45rem]">
                 <div className="flex justify-between border-b border-b-gray-200 pl-6 md:pl-11 pr-5 py-5">
-                    <h1 className="font-header font-semibold text-lg md:text-xl text-text">
+                    <h1 className="font-header font-semibold md:text-xl text-text">
                         {demand.title} internship demand
                     </h1>
                     <button className=" bg-gray-50 text-lg flex items-end"
@@ -158,7 +158,7 @@ const DemandDetails = ({ forUser, setShowDetails, demand }) => {
                     (
                         <div className="border-t border-t-gray-200 px-6 md:px-11 py-5">
 
-                            <div className="text-grayText text-sm font-medium font-body w-fit cursor-pointer"
+                            <div className="text-grayText bg-gray-100 hover:bg-gray-200 px-2 py-1 rounded-md text-sm font-medium font-body w-fit cursor-pointer"
                                 onClick={() => setShowMotive(!showMotive)}
                             >
                                 {showMotive == true ? 'no rejection motive' : 'add a rejection motive'}

@@ -1,13 +1,20 @@
 import { ExportSquare, Category, Calendar, Timer1, Book1 } from "iconsax-react"
 import relativeDate from "../dates/relativeDate"
+import ApplicationDetails from "./ApplicationDetails"
+import { useState } from "react"
+
 
 
 const Application = ({ application, forUser }) => {
 
+    const [showDetails, setShowDetails] = useState(false)
+
 
     return (
         <div className="py-6 px-8 border-b border-gray-200 flex justify-between">
-            <div className="flex-1">
+            <div className="flex-1 cursor-pointer"
+            onClick={() => setShowDetails(true)}
+            >
                 <div className="flex justify-between">
                     {forUser == 'supervisor'
                         ?
@@ -77,6 +84,11 @@ const Application = ({ application, forUser }) => {
                     className="cursor-pointer hover:scale-110 transition"
                 />
             </div>
+            {/* show application details only for hod or supervisor not student  */}
+            {(showDetails == true && (forUser=='hod'|| forUser=='supervisor')) &&
+
+                <ApplicationDetails forUser={forUser} application={application} setShowDetails={setShowDetails} />
+            }
         </div>
     )
 }

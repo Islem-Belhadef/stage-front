@@ -54,12 +54,12 @@ const StudentDemands = () => {
         </div>
 
         :
-        <div className="bg-white rounded-xl shadow-lg shadow-gray-200 pb-10 px-10 flex flex-col justify-center items-center">
+        <div className="bg-white rounded-xl shadow-lg shadow-gray-200 pb-10 px-10 flex flex-col flex-1 justify-center items-center">
           <img src={emptyBox} alt="empty box" className="w-2/3" />
           <h1 className="font-header text-text text-2xl font-bold mb-4">
             Nothing
           </h1>
-          <p className="font-body text-lightText px-20">
+          <p className="font-body text-lightText px-7 md:px-20">
             You don't have any internship demands just yet, try{" "}
             <Link to="/internship/demand" className="text-primary">
               adding a new demand

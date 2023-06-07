@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import authAxios from "../api/axios"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 // Libraries
 import { motion, AnimatePresence } from "framer-motion"
 // Components
@@ -37,6 +37,8 @@ const Profile = () => {
     date_of_birth: '',
     semester: '',
     level: '',
+    cv : '',
+    github:'',
     company_id: null,
     name: "",
     company_email: "",
@@ -203,6 +205,18 @@ const Profile = () => {
                       <p className="text-grayText font-semibold col-span-2">
                         {profile.student.semester}
                       </p>
+                      <p className="text-lightText">Cv</p>
+                      <Link className="text-grayText font-semibold col-span-2 overflow-hidden overflow-ellipsis whitespace-nowrap w-72"
+                         to={profile.student.cv} target="_blank"
+                      >
+                        {profile.student.cv}
+                      </Link>
+                      <p className="text-lightText">Github</p>
+                      <Link className="text-grayText font-semibold col-span-2"
+                         to={profile.student.github} target="_blank"
+                      >
+                        {profile.student.github} 
+                      </Link>
 
                     </>
                   )}
@@ -348,6 +362,34 @@ const Profile = () => {
                         <option value={parseInt('2')}>2nd semester</option>
                       </select>
                     </label>
+
+                    <label htmlFor="cv" className="label gap-1 mb-4">
+                      Cv
+                      <input
+                        type="text"
+                        name="cv"
+                        id="cv"
+                        className="input col-span-2"
+                        defaultValue={profile.student.cv}
+                        onChange={handleInputChange}
+
+                   
+                      />
+                    </label>
+
+                    <label htmlFor="github" className="label gap-1 mb-4">
+                      Github
+                      <input
+                        type="text"
+                        name="github"
+                        id="github"
+                        className="input col-span-2"
+                        defaultValue={profile.student.github}
+                        onChange={handleInputChange}
+                          
+                      />
+                    </label>
+
                   </>
                 )}
 

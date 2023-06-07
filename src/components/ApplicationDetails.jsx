@@ -62,7 +62,7 @@ const ApplicationDetails = ({ forUser, setShowDetails, application }) => {
             <div className=" bg-white h-fit rounded-xl sm:w-[75%] md:w-[45rem]">
                 <div className="flex justify-between border-b border-b-gray-200 pl-6 md:pl-11 pr-5 py-5">
                     <h1 className="font-header font-semibold md:text-xl text-text">
-                        {application.offer.title} internship 
+                        {application.offer.title} internship
                     </h1>
                     <button className=" bg-gray-50 text-lg flex items-end"
                         onClick={() => setShowDetails(false)}
@@ -81,7 +81,7 @@ const ApplicationDetails = ({ forUser, setShowDetails, application }) => {
                             <Avatar firstName={application.student.user.first_name} lastName={application.student.user.last_name} />
                             <div>
                                 <h1 className="text-lg text-text font-medium">
-                                      {application.student.user.first_name} {application.student.user.last_name} 
+                                    {application.student.user.first_name} {application.student.user.last_name}
                                 </h1>
                                 <p className=" text-sm text-primary">
                                     {application.student.user.email}
@@ -90,16 +90,23 @@ const ApplicationDetails = ({ forUser, setShowDetails, application }) => {
                         </div>
 
                         <div className="flex gap-4">
-                            <Link className="flex gap-1 items-center px-2 font-medium text-grayText bg-lightText bg-opacity-30 hover:bg-opacity-60 rounded-md h-fit">
-                                <Document size={18} />
-                                CV
-                            </Link>
-                            <Link className="flex gap-1 items-center px-2 font-medium text-grayText bg-lightText bg-opacity-30 hover:bg-opacity-60 rounded-md h-fit"
-                                to={'https://github.com/ashraf-med'} target="_blank"
-                            >
-                                <Link1 className=' -rotate-45' size={18} />
-                                Github
-                            </Link>
+                            {application.student.cv &&
+                                <Link className="flex gap-1 items-center px-2 font-medium text-grayText bg-lightText bg-opacity-30 hover:bg-opacity-60 rounded-md h-fit"
+                                    to={application.student.cv} target="_blank"
+                                >
+                                    <Document size={18} />
+                                    CV
+                                </Link>
+                            }
+                            {application.student.github &&
+                                <Link className="flex gap-1 items-center px-2 font-medium text-grayText bg-lightText bg-opacity-30 hover:bg-opacity-60 rounded-md h-fit"
+                                    to={application.student.github} target="_blank"
+                                >
+                                    <Link1 className=' -rotate-45' size={18} />
+                                    Github
+                                </Link>
+
+                            }
                         </div>
                     </div>
                     <div className="grid  grid-cols-3 gap-y-2 gap-x-2 mt-8 ml-4">
@@ -126,11 +133,11 @@ const ApplicationDetails = ({ forUser, setShowDetails, application }) => {
 
                     <h1 className="mt-6 mb-3 font-semibold text-text text-lg">internship offer info</h1>
                     <Link
-                     className=" text-primary font-semibold ml-4 flex items-center gap-2"
-                     to={`/internship/offer/${application.offer_id}`} target="_blank"
+                        className=" text-primary font-semibold ml-4 flex items-center gap-2"
+                        to={`/internship/offer/${application.offer_id}`} target="_blank"
                     >
                         Checkout offer details
-                        <ArrowRight size={20}/>
+                        <ArrowRight size={20} />
                     </Link>
                 </div>
 

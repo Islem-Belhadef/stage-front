@@ -90,16 +90,24 @@ const DemandDetails = ({ forUser, setShowDetails, demand }) => {
                         </div>
 
                         <div className="flex gap-4">
-                            <Link className="flex gap-1 items-center px-2 font-medium text-grayText bg-lightText bg-opacity-30 hover:bg-opacity-60 rounded-md h-fit">
-                                <Document size={18} />
-                                CV
-                            </Link>
-                            <Link className="flex gap-1 items-center px-2 font-medium text-grayText bg-lightText bg-opacity-30 hover:bg-opacity-60 rounded-md h-fit"
-                                to={'https://github.com/ashraf-med'} target="_blank"
-                            >
-                                <Link1 className=' -rotate-45' size={18} />
-                                Github
-                            </Link>
+                            {demand.student.cv &&
+                                <Link className="flex gap-1 items-center px-2 font-medium text-grayText bg-lightText bg-opacity-30 hover:bg-opacity-60 rounded-md h-fit"
+                                    to={demand.student.cv} target="_blank"
+                                >
+                                    <Document size={18} />
+                                    CV
+                                </Link>
+
+                            }
+                            {demand.student.github &&
+                                <Link className="flex gap-1 items-center px-2 font-medium text-grayText bg-lightText bg-opacity-30 hover:bg-opacity-60 rounded-md h-fit"
+                                    to={demand.student.github} target="_blank"
+                                >
+                                    <Link1 className=' -rotate-45' size={18} />
+                                    Github
+                                </Link>
+
+                            }
                         </div>
                     </div>
                     <div className="grid  grid-cols-3 gap-y-2 gap-x-2 mt-8 ml-4">

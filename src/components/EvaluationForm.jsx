@@ -68,90 +68,100 @@ const EvaluationForm = ({ internship, setShowEvaluationForm }) => {
                     </button>
                 </div>
                 <form
-                    className="px-4 md:px-16 pt-2 pb-4"
-
+                    onSubmit={handleEvaluate}
                 >
-                    <div className="flex items-center justify-between w-full px-2 py-3 border-b border-gray-200">
-                        <label className="text-text font-medium  md:ml-6" htmlFor="discipline">General discipline</label>
-                        <div className="relative">
-                            <input
-                                type="text"
-                                name="discipline"
-                                className="bg-[#EAEAEA] w-24 h-9 rounded-md md:mr-6 px-5 py-3 focus:outline-none text-text text-center"
-                                onChange={handleInputChange}
-                            />
-                            <span className="text-lightText absolute top-[6px] right-4 md:right-9">/4</span>
+                    <div className="px-4 md:px-16 pt-2 pb-4">
+                        <div className="flex items-center justify-between w-full px-2 py-3 border-b border-gray-200">
+                            <label className="text-text font-medium  md:ml-6" htmlFor="discipline">General discipline</label>
+                            <div className="relative">
+                                <input
+                                    type="text"
+                                    name="discipline"
+                                    className="bg-[#EAEAEA] w-24 h-9 rounded-md md:mr-6 px-5 pl-3 pr-7 focus:outline-none text-text text-center"
+                                    required
+                                    pattern="^(0|[1-3](\.\d)?|4(\.0)?)$"
+                                    onChange={handleInputChange}
+                                />
+                                <span className="text-lightText absolute top-[6px] right-4 md:right-9">/4</span>
+                            </div>
+                        </div>
+                        <div className="flex items-center justify-between w-full px-2 py-3 border-b border-gray-200">
+                            <label className="text-text font-medium  md:ml-6" htmlFor="aptitude">Work skills</label>
+                            <div className="relative">
+                                <input
+                                    type="text"
+                                    name="aptitude"
+                                    className="bg-[#EAEAEA] w-24 h-9 rounded-md md:mr-6 px-5 pl-3 pr-7 focus:outline-none text-text text-center"
+                                    required
+                                    pattern="^(0|[1-3](\.\d)?|4(\.0)?)$"
+                                    onChange={handleInputChange}
+
+                                />
+                                <span className="text-lightText absolute top-[6px] right-4 md:right-9">/4</span>
+                            </div>
+                        </div>
+                        <div className="flex items-center justify-between w-full px-2 py-3 border-b border-gray-200">
+                            <label className="text-text font-medium  md:ml-6" htmlFor="initiative">Initiative</label>
+                            <div className="relative">
+                                <input
+                                    type="text"
+                                    name="initiative"
+                                    className="bg-[#EAEAEA] w-24 h-9 rounded-md md:mr-6 px-5 pl-3 pr-7 focus:outline-none text-text text-center"
+                                    required
+                                    pattern="^(0|[1-3](\.\d)?|4(\.0)?)$"
+                                    onChange={handleInputChange}
+
+                                />
+                                <span className="text-lightText absolute top-[6px] right-4 md:right-9">/4</span>
+                            </div>
+                        </div>
+                        <div className="flex items-center justify-between w-full px-2 py-3 border-b border-gray-200">
+                            <label className="text-text font-medium  md:ml-6" htmlFor="innovation">Innovation</label>
+                            <div className="relative">
+                                <input
+                                    type="text"
+                                    name="innovation"
+                                    className="bg-[#EAEAEA] w-24 h-9 rounded-md md:mr-6 px-5 pl-3 pr-7 focus:outline-none text-text text-center"
+                                    required
+                                    pattern="^(0|[1-3](\.\d)?|4(\.0)?)$"
+                                    onChange={handleInputChange}
+
+                                />
+                                <span className="text-lightText absolute top-[6px] right-4 md:right-9">/4</span>
+                            </div>
+                        </div>
+                        <div className="flex items-center justify-between w-full px-2 py-3 border-b border-gray-200">
+                            <label className="text-text font-medium  md:ml-6" htmlFor="acquired_knowledge">Acquired_knowledge</label>
+                            <div className="relative">
+                                <input
+                                    type="text"
+                                    name="acquired_knowledge"
+                                    className="bg-[#EAEAEA] w-24 h-9 rounded-md md:mr-6 px-5 pl-3 pr-7 focus:outline-none text-text text-center"
+                                    required
+                                    pattern="^(0|[1-3](\.\d)?|4(\.0)?)$"
+                                    onChange={handleInputChange}
+
+                                />
+                                <span className="text-lightText absolute top-[6px] right-4 md:right-9">/4</span>
+                            </div>
+                        </div>
+                        <div className="flex items-center justify-between w-full px-2 py-3">
+                            <p className="text-text text-lg font-medium md:ml-6">Total Mark</p>
+                            <p>{Number(formData.acquired_knowledge) + Number(formData.aptitude) + Number(formData.discipline) + Number(formData.initiative) + Number(formData.innovation)}</p>
+
                         </div>
                     </div>
-                    <div className="flex items-center justify-between w-full px-2 py-3 border-b border-gray-200">
-                        <label className="text-text font-medium  md:ml-6" htmlFor="aptitude">Work skills</label>
-                        <div className="relative">
-                            <input
-                                type="text"
-                                name="aptitude"
-                                className="bg-[#EAEAEA] w-24 h-9 rounded-md md:mr-6 px-5 py-3 focus:outline-none text-text text-center"
-                                onChange={handleInputChange}
+                    <p className="text-grayText text-xs md:text-sm pl-4 md:pl-11 ">the intern will be able to download<br className="sm:hidden"></br>this form as a pdf</p>
 
-                            />
-                            <span className="text-lightText absolute top-[6px] right-4 md:right-9">/4</span>
-                        </div>
+                    <div className="flex justify-end pb-4 px-5">
+                        <button
+                            className="text-primary sm:text-lg font-medium hover:bg-primary hover:bg-opacity-10 px-2 py-1 rounded-md cursor-pointer"
+                            type="submit"
+                        >
+                            Save
+                        </button>
                     </div>
-                    <div className="flex items-center justify-between w-full px-2 py-3 border-b border-gray-200">
-                        <label className="text-text font-medium  md:ml-6" htmlFor="initiative">Initiative</label>
-                        <div className="relative">
-                            <input
-                                type="text"
-                                name="initiative"
-                                className="bg-[#EAEAEA] w-24 h-9 rounded-md md:mr-6 px-5 py-3 focus:outline-none text-text text-center"
-                                onChange={handleInputChange}
-
-                            />
-                            <span className="text-lightText absolute top-[6px] right-4 md:right-9">/4</span>
-                        </div>
-                    </div>
-                    <div className="flex items-center justify-between w-full px-2 py-3 border-b border-gray-200">
-                        <label className="text-text font-medium  md:ml-6" htmlFor="innovation">Innovation</label>
-                        <div className="relative">
-                            <input
-                                type="text"
-                                name="innovation"
-                                className="bg-[#EAEAEA] w-24 h-9 rounded-md md:mr-6 px-5 py-3 focus:outline-none text-text text-center"
-                                onChange={handleInputChange}
-
-                            />
-                            <span className="text-lightText absolute top-[6px] right-4 md:right-9">/4</span>
-                        </div>
-                    </div>
-                    <div className="flex items-center justify-between w-full px-2 py-3 border-b border-gray-200">
-                        <label className="text-text font-medium  md:ml-6" htmlFor="acquired_knowledge">Acquired_knowledge</label>
-                        <div className="relative">
-                            <input
-                                type="text"
-                                name="acquired_knowledge"
-                                className="bg-[#EAEAEA] w-24 h-9 rounded-md md:mr-6 px-5 py-3 focus:outline-none text-text text-center"
-                                onChange={handleInputChange}
-
-                            />
-                            <span className="text-lightText absolute top-[6px] right-4 md:right-9">/4</span>
-                        </div>
-                    </div>
-                    <div className="flex items-center justify-between w-full px-2 py-3">
-                        <p className="text-text text-lg font-medium md:ml-6">Total Mark</p>
-                        <p>{Number(formData.acquired_knowledge) + Number(formData.aptitude) + Number(formData.discipline) + Number(formData.initiative) + Number(formData.innovation)}</p>
-
-                    </div>
-
                 </form>
-                <p className="text-grayText text-xs md:text-sm px-6 md:px-11">the intern will be able to download <br className="sm:hidden"></br>this form as a pdf</p>
-                <div className="flex justify-end pl-6 md:pl-11 pr-5 pb-3">
-                    <button
-                        className="text-primary text-sm md:text-base font-medium hover:bg-primary hover:bg-opacity-10 px-2 py-1 rounded-md cursor-pointer"
-
-                        onClick={handleEvaluate}
-                    >
-                        Save
-                    </button>
-                </div>
 
             </div>
             {showMessage == true && (

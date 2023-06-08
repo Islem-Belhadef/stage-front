@@ -30,6 +30,8 @@ const Profile = () => {
   const [specialities, setSpecialities] = useState([])
   const [loading, setLoading] = useState(true)
   const [formData, setFormData] = useState({
+    first_name:'',
+    last_name:'',
     email: '',
     role: null,
     department_id: null,
@@ -536,6 +538,28 @@ const Profile = () => {
               exit={{ opacity: 0 }}
               className="max-w-lg"
             >
+              <label htmlFor="first_name" className="label gap-1 mb-4">
+                First Name
+                <input
+                  type="text"
+                  name="first_name"
+                  id="first_name"
+                  className="input col-span-2"
+                  defaultValue={profile.first_name}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label htmlFor="last_name" className="label gap-1 mb-4">
+                Last Name
+                <input
+                  type="text"
+                  name="last_name"
+                  id="last_name"
+                  className="input col-span-2"
+                  defaultValue={profile.last_name}
+                  onChange={handleInputChange}
+                />
+              </label>
               <label htmlFor="email" className="label gap-1 mb-4">
                 Email Address
                 <input

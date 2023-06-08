@@ -11,6 +11,7 @@ const DemandDetails = ({ forUser, setShowDetails, demand }) => {
     const [showMessage, SetShowMessage] = useState(false)
     const [messageText, SetMessageText] = useState(false)
     const [showMotive, setShowMotive] = useState(false)
+    const [processing , setProcessing]= useState(false)
     const [rejectionMotive, setRejectionMotive] = useState('')
     const navigate = useNavigate()
 
@@ -19,9 +20,11 @@ const DemandDetails = ({ forUser, setShowDetails, demand }) => {
 
 
     const approveDemand = () => {
+        setProcessing(true)
         authAxios.put(`demands/update/${demand.id}`, { status: approve_status })
             .then(res => {
-                if (res.status == 200) {
+                if (res.status == 200 || res.status ==201) {
+                    setProcessing(false)
                     SetMessageText('demand approved')
                     SetShowMessage(true)
                     setTimeout(() => {
@@ -192,7 +195,10 @@ const DemandDetails = ({ forUser, setShowDetails, demand }) => {
 
                                 <button className="primary-btn w-1/2 sm:w-fit !px-3 sm:!px-10 "
                                     onClick={approveDemand}
-                                >approve</button>
+                                    disabled={processing}
+                                >
+                                    {processing == true ? 'processing' :'approve'}
+                                </button>
                             </div>
                         </div>
                     )}

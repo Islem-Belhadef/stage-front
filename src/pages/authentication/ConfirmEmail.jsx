@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import authAxios from "../../api/axios"
+import { Cookies } from "react-cookie"
 // Assets
 import { Sms, ArrowLeft } from "iconsax-react"
 
@@ -21,6 +22,8 @@ const handleKeyUp = (e) => {
 
 const ConfirmEmail = () => {
 
+  const cookies = new Cookies()
+
   const [code1, setCode1] = useState(``)
   const [code2, setCode2] = useState('')
   const [code3, setCode3] = useState('')
@@ -29,6 +32,7 @@ const ConfirmEmail = () => {
   const [code6, setCode6] = useState('')
 
   const navigate = useNavigate()
+  const type = cookies.get("type")
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -38,7 +42,13 @@ const ConfirmEmail = () => {
       .then((res) => {
         if (res.status === 200) {
           console.log(res)
-          window.location.replace("/signup/info")
+          if(type){
+            window.location.replace("/")
+
+          }else{
+            window.location.replace("/signup/info")
+
+          }
         } else {
           console.log("Wrong verification code")
         }

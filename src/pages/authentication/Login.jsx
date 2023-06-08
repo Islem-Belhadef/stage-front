@@ -44,7 +44,11 @@ const Login = () => {
           setShowMessage(true)
           setTimeout(async () => {
             setShowMessage(false)
-            window.location.replace("/")
+            if(res.data.isVerified==true){
+              window.location.replace("/")
+            }else{
+              window.location.replace("/signup/confirm")
+            }
           }, 1500)
         }
       })

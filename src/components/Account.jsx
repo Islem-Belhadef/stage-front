@@ -6,10 +6,14 @@ import studentImage from "../assets/student.svg"
 import supervisorImage from "../assets/supervisor.svg"
 import hodImage from "../assets/hod.svg"
 import DeleteModal from "./DeleteModal"
+import EditAccount from "./EditAccount"
 
 const Account = ({ account }) => {
 
   const [showDelete, setShowDelete] = useState(false)
+  const [showEditAccount, setShowEditAccount] = useState(false)
+
+  
 
   let img =
     account.role == 0
@@ -45,6 +49,8 @@ const Account = ({ account }) => {
         <Edit
           color="#7CDF64"
           className="cursor-pointer hover:scale-110 transition"
+          onClick={() => setShowEditAccount(true)}
+
         />
         <Trash
           color="#F64A4A"
@@ -53,8 +59,11 @@ const Account = ({ account }) => {
         />
       </div>
 
-      {showDelete &&
+      {showDelete==true &&
         <DeleteModal For='account' accountId={account.id} accountName={account.last_name +' '+account.first_name} setShowDelete={setShowDelete} />
+      }
+      {showEditAccount ==true &&
+        <EditAccount account={account} setShowEditAccount={setShowEditAccount}/>
       }
     </div>
   )

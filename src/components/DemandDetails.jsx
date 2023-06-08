@@ -12,6 +12,7 @@ const DemandDetails = ({ forUser, setShowDetails, demand }) => {
     const [messageText, SetMessageText] = useState(false)
     const [showMotive, setShowMotive] = useState(false)
     const [processing , setProcessing]= useState(false)
+    const [showAgreement , setShowAgreement]= useState(false)
     const [rejectionMotive, setRejectionMotive] = useState('')
     const navigate = useNavigate()
 
@@ -169,12 +170,17 @@ const DemandDetails = ({ forUser, setShowDetails, demand }) => {
                     (
                         <div className="border-t border-t-gray-200 px-6 md:px-11 py-5">
 
-                            <div className="text-grayText bg-gray-100 hover:bg-gray-200 px-2 py-1 rounded-md text-sm font-medium font-body w-fit cursor-pointer"
+                            {showAgreement==false && <div className="text-grayText bg-gray-100 hover:bg-gray-200 px-2 py-1 rounded-md text-sm font-medium font-body w-fit cursor-pointer"
                                 onClick={() => setShowMotive(!showMotive)}
                             >
                                 {showMotive == true ? 'no rejection motive' : 'add a rejection motive'}
 
-                            </div>
+                            </div>}
+                            {
+                                showAgreement==true && 
+                                    
+                                "in case superviosr acccount dont exist it will be created"
+                            }
                             {showMotive == true && (
                                 <textarea
                                     type="text"
@@ -187,6 +193,8 @@ const DemandDetails = ({ forUser, setShowDetails, demand }) => {
                                 />
                             )}
 
+                            
+
 
                             <div className="flex gap-6 justify-center mt-4">
                                 <button className="secondary-btn w-1/2 sm:w-fit !px-3 sm:!px-10 "
@@ -194,7 +202,16 @@ const DemandDetails = ({ forUser, setShowDetails, demand }) => {
                                 >reject</button>
 
                                 <button className="primary-btn w-1/2 sm:w-fit !px-3 sm:!px-10 "
-                                    onClick={approveDemand}
+                                    onClick={()=> {
+                                        if(forUser=='hod'&&showAgreement==false){
+                                            setShowAgreement(true)
+                                        }else if(forUser=='hod'&&showAgreement==true){
+                                            approveDemand();
+                                        }else{
+                                            approveDemand();
+
+                                        }
+                                    }}
                                     disabled={processing}
                                 >
                                     {processing == true ? 'processing' :'approve'}

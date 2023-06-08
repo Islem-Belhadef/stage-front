@@ -26,6 +26,7 @@ const EditAccount = ({ account, setShowEditAccount }) => {
         }))
     }
 
+    
     const handleEditAccount = (e) => {
         e.preventDefault()
         authAxios.put(`accounts/update/${account.id}}`, formData)

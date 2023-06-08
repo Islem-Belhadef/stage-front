@@ -56,6 +56,7 @@ const Account = ({ account }) => {
           color="#F64A4A"
           className="cursor-pointer hover:scale-110 transition"
           onClick={() => setShowDelete(true)}
+          
         />
       </div>
 

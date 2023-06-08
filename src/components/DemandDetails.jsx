@@ -147,6 +147,7 @@ const DemandDetails = ({ forUser, setShowDetails, demand }) => {
 
                             </>
 
+                            
                         )}
                         <p className="text-grayText">Duration</p>
                         <p className=" font-semibold col-span-2">
